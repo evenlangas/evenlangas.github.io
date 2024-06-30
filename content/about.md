@@ -9,15 +9,22 @@ I studied Mechatronics Engineering from 2016 to 2021 at the University of Agder 
 
 ## Experience
 
-<!-- **[Amazon](https://www.amazon.jobs/teams/aft)** \
-07/24 - Now | Berlin \
-*Software Development Engineer 2 on the Amazon fulfillment technologies team* -->
-
 **[Twilligent](https://www.twilligent.io/)** \
-10/21 -  | Arendal, Norway \
-*Head of R&D and Industrial PhD Research Fellow*
+10/22 -  | Arendal, Norway \
+*Head of R&D and Industrial PhD Research Fellow* \
+\
+10/21 - 10/22 \
+*R&D Engineer*
+
+**[Scanmatic](https://www.scanmatic.no/)** \
+01/21 - 10/22 | Arendal, Norway \
+*Project Engineer*
 
 ## Education
+
+**[University of Agder](https://www.uia.no/)** \
+2022 - \
+*PhD degree in mechatronics*
 
 **[University of Agder](https://www.uia.no/)** \
 2019 - 2021 \

@@ -1,13 +1,11 @@
 ---
-title: "About"
+title: "Experience"
 description: "A description of Even Falkenberg Langås, a Norwegian mechatronics engineer."
 hideBackToTop: true
 # autonumber: true
 ---
 
 I studied Mechatronics Engineering from 2016 to 2021 at the University of Agder (UiA), and started working with in the industry. In October 2022 i started an industrial PhD with Twilligent and UiA.
-
-## Experience
 
 **[Twilligent](https://www.twilligent.io/)** \
 10/22 -  | Arendal, Norway \

@@ -16,18 +16,20 @@ description = "A Tech Blog"
 # Appearance settings
 theme = 'auto'
 
-# Intro on main page, content is markdown
-homeIntroTitle = 'Hi!'
-homeIntroContent = """
-I am a dedicated and creative mechatronics engineer with a Master's degree from the University of Agder. My experience with R&D in addition to building a startup makes me a versatile asset. I like a challenge and love to learn new things!"""
+homePicture = "./profilbilde.jpg"
 
+# Intro on main page, content is markdown
+homeIntroTitle = ''
+homeIntroContent = """
+I am a dedicated and creative mechatronics engineer with a Master's degree from the University of Agder. My experience with R&D in addition to building a startup makes me a versatile asset. I like a challenge and love to learn new things!
+"""
 
 # Collection to display on home
-homeCollectionTitle = 'Posts'
-homeCollection = 'posts'
+homeCollectionTitle = 'Projects'
+homeCollection = 'projects'
 
 # Lists parameters
-paginationSize = 100
+paginationSize = 10
 listSummaries = true
 listDateFormat = '2 Jan 2006'
 
@@ -35,7 +37,6 @@ listDateFormat = '2 Jan 2006'
 breadcrumbs = true
 
 # Social icons
-
 
 [[params.social]]
 name = "email"
@@ -67,12 +68,16 @@ name = "home"
 url = "/"
 
 [[params.menu]]
-name = "posts"
-url = "/posts"
+name = "projects"
+url = "/projects"
 
 [[params.menu]]
-name = "about"
-url = "/about"
+name = "papers"
+url = "/papers"
+
+[[params.menu]]
+name = "experience"
+url = "/experience"
 
 # Syntax highligth on code blocks
 [markup]

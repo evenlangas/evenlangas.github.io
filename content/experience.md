@@ -15,8 +15,12 @@ I studied Mechatronics Engineering from 2016 to 2021 at the University of Agder 
 *R&D Engineer*
 
 **[Scanmatic](https://www.scanmatic.no/)** \
-01/21 - 10/22 | Arendal, Norway \
+01/21 - 10/21 | Arendal, Norway \
 *Project Engineer*
+
+**[University of Agder](https://www.uia.no/)** \
+01/21 - 10/21 | Arendal, Norway \
+*Student Teaching Assistant*
 
 ## Education
 

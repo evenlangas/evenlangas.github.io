@@ -1,5 +1,5 @@
 ---
-title: "Virtual Reality Remote Control of Robot Using MQTT"
+title: "Virtual Reality Based Remote Control of Robot [Research]"
 date: "2024-06-28"
 summary: "By using Node-RED, MQTT and a Virtual Reality interface, we are able to do remote monitoring and control of a manufacturing cell."
 description: "This is the description"

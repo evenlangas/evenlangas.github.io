@@ -10,7 +10,6 @@ I studied Mechatronics Engineering from 2016 to 2021 at the University of Agder 
 **[Twilligent](https://www.twilligent.io/)** \
 10/22 -  | Arendal, Norway \
 *Head of R&D and Industrial PhD Research Fellow* \
-\
 10/21 - 10/22 \
 *R&D Engineer*
 
@@ -19,8 +18,12 @@ I studied Mechatronics Engineering from 2016 to 2021 at the University of Agder 
 *Project Engineer*
 
 **[University of Agder](https://www.uia.no/)** \
-01/21 - 10/21 | Arendal, Norway \
+08/18 - 12/18 | Arendal, Norway \
 *Student Teaching Assistant*
+
+**[Forsvaret - Norwegian Armed Forces](https://www.forsvaret.no/)** \
+07/15 - 06/16 | Bergen, Norway \
+*Gunner and Fire Fighter at Minesweeper KNM Otra*
 
 ## Education
 

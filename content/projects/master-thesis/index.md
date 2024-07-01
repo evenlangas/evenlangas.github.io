@@ -41,3 +41,5 @@ the URL below.
 Github: [https://github.com/evenfl/p26_master](https://github.com/evenfl/p26_master)
 
 Video: [https://youtu.be/1QShpxbUy2Q](https://youtu.be/1QShpxbUy2Q)
+
+Read the entire thesis [here.](https://hdl.handle.net/11250/2826427)

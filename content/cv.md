@@ -1,5 +1,5 @@
 ---
-title: "Experience"
+title: "CV"
 description: "A description of Even Falkenberg Langås, a Norwegian mechatronics engineer."
 hideBackToTop: true
 # autonumber: true

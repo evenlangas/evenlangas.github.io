@@ -34,7 +34,7 @@ listSummaries = true
 listDateFormat = '2 Jan 2006'
 
 # Breadcrumbs
-breadcrumbs = true
+breadcrumbs = false
 
 # Social icons
 
@@ -58,10 +58,6 @@ url = "https://discord.com/users/evenlangas"
 name = "googlescholar"
 url = "https://scholar.google.com/citations?user=lzgwLVgAAAAJ&hl=en"
 
-[[params.social]]
-name = "researchgate"
-url = "https://www.researchgate.net/profile/Even_Langas"
-
 # Main menu pages
 [[params.menu]]
 name = "home"
@@ -76,8 +72,8 @@ name = "papers"
 url = "/papers"
 
 [[params.menu]]
-name = "experience"
-url = "/experience"
+name = "cv"
+url = "/cv"
 
 # Syntax highligth on code blocks
 [markup]

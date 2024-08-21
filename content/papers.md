@@ -6,6 +6,12 @@ hidePagination: true
 # autonumber: true
 ---
 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zafar MH, Langås EF, Nyberg SO, Sanfilippo F. Multimodal Fusion of EEG and EMG Signals Using Self-Attention Multi-Temporal Convolutional Neural Networks for Enhanced Hand Gesture Recognition in Rehabilitation. In 2024 IEEE International Conference on Omni-layer Intelligent Systems (COINS) 2024 Jul 29 (pp. 1-5). IEEE.
+\
+[Read the paper](https://doi.org/10.1109/COINS61597.2024.10622144)
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zafar, M.H., Langås, E.F. and Sanfilippo, F., 2024. Exploring the synergies between collaborative robotics, digital twins, augmentation, and industry 5.0 for smart manufacturing: A state-of-the-art review. Robotics and Computer-Integrated Manufacturing, 89, p.102769. 
 \
 [Read the paper](https://doi.org/10.1109/ICARA60736.2024.10553163)

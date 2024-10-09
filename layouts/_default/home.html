@@ -47,11 +47,46 @@
 </div>
 {{ end }}
 
+
+<div>
+    <h3>About my work</h3>
+    
+    <p>
+        {{with .Site.Params.currentPosition}}
+        <p style="font-style: italic;">{{.}}</p>
+        {{end}}
+        At Twilligent, I work on developing digital twins for industrial companies, merging 3D representations with real-time sensor data.
+        Furthermore, on my PhD project I focus on software technologies to enable human-robot teaming (HRT), where we aim to make humans and robots work together as teammates, thus sharing workspace and exchanging solutions.
+    </p>
+
+    {{ if .Site.Params.aboutMeVideo }}
+    {{ with .Site.Params.aboutMeVideo }}
+            <div style="text-align: center; width: 100%;">
+                <p><strong>Video presenting some of the work</strong></p>
+                <iframe style="border-radius: 10px; width: 500px; max-width: 95%; aspect-ratio: 16/9;" src="{{.}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    {{ end }}
+    {{ end }}
+
+    {{ if .Site.Params.aboutMeAudio }}
+        {{ with .Site.Params.aboutMeAudio }}
+        <div style="text-align: center;">
+            <p><strong>✨ AI podcast about my PhD project</strong></p>
+            <audio controls>
+                <source src="{{ . }}" type="audio/ogg">
+            </audio>
+        </div>
+    {{ end }}
+    {{ end }}
+
+    </div>
+
 {{/* Collection Section */}}
 
 {{ if .Site.Params.homeCollection }}
 
-<div class="list-container">
+
+<!-- <div class="list-container">
     {{ with .Site.Params.homeCollectionTitle}}
     <h1> {{ . }} </h1>
     {{ end }}
@@ -72,7 +107,7 @@
 
     {{ partial "pagination-controls.html" $paginator}}
 
-    {{ end }}
-</div>
+</div> -->
+{{ end }}
 
 {{ end }}

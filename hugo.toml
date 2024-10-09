@@ -17,6 +17,10 @@ description = "A Tech Blog"
 theme = 'auto'
 
 homePicture = "./profilbilde.jpg"
+currentPosition = "Head of R&D at Twilligent / PhD Research Fellow at UiA"
+
+aboutMeAudio = "./phdpodcast.wav"
+aboutMeVideo = "https://www.youtube.com/embed/xSnyjV5pLr4"
 
 # Intro on main page, content is markdown
 homeIntroTitle = ''

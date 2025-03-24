@@ -1,65 +1,45 @@
 +++
-title = "Human Trajectory Prediction in a Real-World Industrial Setting"
-date = "2025-01-13T00:00:00-00:00"
-summary = "This project includes collection of human trajectory data using a LiDAR system. Furthermore, machine learning based prediction algorithms was developed to predict trajectories in real-time to increase efficiency and safety in industrial settings."
+title = "Predicting Human Trajectories in Industrial Settings" 
+date = "2025-03-01T00:00:00-00:00"
+summary = "This project addresses a central challenge in Industry 5.0: enabling safe and efficient human-robot collaboration. By combining LiDAR-based human tracking with AI-driven prediction models, we can anticipate worker movement and prepare collaborative workstations in advance. This reduces stall time and enhances workplace safety without relying on bulky safety cages."
 categories = ["projects"]
 tags = ["projects"]
 layout = "hyde-master"
 +++
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <title>PhD Project: Safe Human-Robot Collaboration</title>
-        <style>
-            
-            .video-container {
-                position: relative;
-                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
-                height: 0;
-                overflow: hidden;
-                /* width: 60%; */
-            }
-            .video-container iframe {
-                position: absolute;
-                border-radius: 10px; 
-                max-width: 95%; 
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;    
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            
-            <h2>Collected data</h2>
-            <div class="video-container">
-                <video width="640" height="360" controls>
-                    <source src="htp_data.mp4" type="video/mp4">
-                </video>
-            </div>
-    
-            <img src="heatmap.png"/>
+  <head>
+    <meta charset="UTF-8">
+    <title>Predicting Human Trajectories in Industry 5.0</title>
+  </head>
+  <body>
+    A research paper presenting the work is currently under review in IEEE Transactions on Cybernetics.
 
-        </div>
-    </body>
-	<!-- <body>
-    <div style="text-align: center; width: 100%;">
-    <a href="./mid_term_report_even.pdf"><button style="padding: 20px; border-radius: 10px; border: 1px solid black; font-weight: bold;">
-        Download mid-term report
-    </button></a>
-    </div>
-    
-    <div style="text-align: center; width: 100%;">
-        <p><strong>Video presenting some of the work</strong></p>
-        <iframe style="border-radius: 10px; width: 500px; max-width: 95%; aspect-ratio: 16/9;" src="https://www.youtube.com/embed/xSnyjV5pLr4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div style="text-align: center;">
-        <p><strong>✨ AI podcast about my PhD project</strong></p>
-        <audio controls>
-            <source src="./phdpodcast.wav" type="audio/ogg">
-        </audio>
-    </div>
-	</body> -->
+    <h2>Key Highlights</h2>
+    <ul>
+      <li>Real-world data was collected in a 26m × 20m factory environment using an advanced LiDAR system.</li>
+      <li>A long short-term memory (LSTM) neural network was used to predict the workstation a person is heading toward, up to 3 seconds in advance.</li>
+      <li>To overcome limited real-world data, two data augmentation techniques were used: TimeGAN (AI-generated trajectories) and a traditional Ornstein-Uhlenbeck process (statistical simulations).</li>
+      <li>Combining synthetic and real data improved accuracy from 87.5% to 95.6% for predictions 3 seconds ahead.</li>
+    </ul>
+
+    <h2>Why It Matters</h2>
+    <p>
+      In smart factories, predicting where workers are going lets machines react in real time—either by preparing tools or adjusting speed to avoid collisions. This makes factories safer, more efficient, and better aligned with human needs.
+    </p>
+
+    <h2>Challenges Tackled</h2>
+    <ul>
+      <li><strong>Data scarcity:</strong> Human movement data is hard to collect. The team addressed this with synthetic data generation and transfer learning.</li>
+      <li><strong>Real-time accuracy:</strong> The model can correctly predict a person’s destination up to 3 seconds before they arrive with >95% accuracy.</li>
+      <li><strong>Privacy:</strong> The LiDAR setup anonymises data, respecting participant privacy.</li>
+    </ul>
+
+    <h2>Technologies Used</h2>
+    <ul>
+      <li>LiDAR-based human tracking</li>
+      <li>Stacked LSTM network for prediction</li>
+      <li>TimeGAN and OU process for synthetic data generation</li>
+    </ul>
+  </body>
 </html>

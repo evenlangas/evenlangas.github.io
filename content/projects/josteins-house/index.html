@@ -543,6 +543,11 @@ minCanvas.addEventListener("touchmove", function(evt) {
     musx = evt.touches[0].clientX - minCanvas.getBoundingClientRect().left;
     musy = evt.touches[0].clientY - minCanvas.getBoundingClientRect().top;
 });
+minCanvas.addEventListener("touchend", function(evt) {
+    evt.preventDefault();
+    // Call the same function or put the same code that's in your onclick handler
+    // This will run when a user lifts their finger from the screen
+});
 
 </script>
 </body>

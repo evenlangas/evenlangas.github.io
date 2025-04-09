@@ -61,14 +61,14 @@
 
     {{ if .Site.Params.aboutMeVideo }}
     {{ with .Site.Params.aboutMeVideo }}
-            <div style="text-align: center; width: 100%;">
+            <div style="text-align: left; width: 100%;">
                 <p><strong>Video presenting some of the work</strong></p>
                 <iframe style="border-radius: 10px; width: 500px; max-width: 95%; aspect-ratio: 16/9;" src="{{.}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     {{ end }}
     {{ end }}
 
-    {{ if .Site.Params.aboutMeAudio }}
+    <!-- {{ if .Site.Params.aboutMeAudio }}
         {{ with .Site.Params.aboutMeAudio }}
         <div style="text-align: center;">
             <p><strong>✨ AI podcast about my PhD project</strong></p>
@@ -77,7 +77,7 @@
             </audio>
         </div>
     {{ end }}
-    {{ end }}
+    {{ end }} -->
 
     </div>
 

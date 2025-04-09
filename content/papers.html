@@ -1,0 +1,272 @@
+---
+title: "Papers"
+description: ""
+hideBackToTop: true
+hidePagination: true
+# autonumber: true
+---
+
+<style>
+    .search-container {
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    
+    .search-input {
+        width: 70%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #8383832a;
+        border-radius: 5px;
+    }
+    
+    .search-button {
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    .search-button:hover {
+        background-color: #2980b9;
+    }
+    
+    .publication {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #7979790e;
+        border-radius: 5px;
+        border-left: 4px solid #3498db57;
+    }
+    
+    .publication-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .publication-authors {
+        font-style: italic;
+        margin-bottom: 5px;
+    }
+    
+    .publication-venue {
+        color: #7d7d7d;
+        margin-bottom: 10px;
+    }
+    
+    .publication-link {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .publication-abstract {
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+    
+    .abstract-full {
+        display: none;
+        margin-top: 5px;
+    }
+    
+    .read-more, .read-less {
+        color: #3498db;
+        font-weight: bold;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    
+    .read-more:hover, .read-less:hover {
+        text-decoration: underline;
+    }
+    
+    .no-results {
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        display: none;
+    }
+</style>
+
+<script>
+    function toggleAbstract(id) {
+        var fullText = document.getElementById('abstract-full-' + id);
+        var readMoreBtn = document.getElementById('read-more-' + id);
+        var readLessBtn = document.getElementById('read-less-' + id);
+        
+        if (fullText.style.display === 'none' || fullText.style.display === '') {
+            fullText.style.display = 'inline';
+            readMoreBtn.style.display = 'none';
+            readLessBtn.style.display = 'inline';
+        } else {
+            fullText.style.display = 'none';
+            readMoreBtn.style.display = 'inline';
+            readLessBtn.style.display = 'none';
+        }
+    }
+    
+    function searchPublications() {
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const publications = document.querySelectorAll('.publication');
+        let foundResults = false;
+        
+        publications.forEach(publication => {
+            const title = publication.querySelector('.publication-title').innerText.toLowerCase();
+            const authors = publication.querySelector('.publication-authors').innerText.toLowerCase();
+            const abstract = publication.querySelector('.publication-abstract').innerText.toLowerCase();
+            
+            if (title.includes(searchTerm) || authors.includes(searchTerm) || abstract.includes(searchTerm)) {
+                publication.style.display = 'block';
+                foundResults = true;
+            } else {
+                publication.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('no-results').style.display = foundResults ? 'none' : 'block';
+    }
+    
+    function clearSearch() {
+        document.getElementById('search-input').value = '';
+        const publications = document.querySelectorAll('.publication');
+        
+        publications.forEach(publication => {
+            publication.style.display = 'block';
+        });
+        
+        document.getElementById('no-results').style.display = 'none';
+    }
+</script>
+
+<div class="search-container">
+    <input type="text" id="search-input" class="search-input" placeholder="Search by title, author, or content...">
+    <button class="search-button" onclick="searchPublications()">Search</button>
+    <button class="search-button" onclick="clearSearch()" style="background-color: #e74c3c;">Clear</button>
+</div>
+
+<div id="no-results" class="no-results">No publications found matching your search criteria.</div>
+
+<!-- <h2>Research Publications</h2> -->
+
+<div class="publication">
+    <div class="publication-title">Multimodal Fusion of EEG and EMG Signals Using Self-Attention Multi-Temporal Convolutional Neural Networks for Enhanced Hand Gesture Recognition in Rehabilitation</div>
+    <div class="publication-authors">Muhammad Hamza Zafar, Even Falkenberg Langås, Svein Olav Nyberg, Filippo Sanfilippo</div>
+    <div class="publication-venue">IEEE International Conference on Omni-layer Intelligent Systems (COINS), 2024</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> In this work, we introduce an innovative approach to hand gesture recognition aimed at rehabilitation applications, utilising the synergistic potential of multimodal data fusion from electroencephalogram (EEG) and electromyogram (EMG) sensors.
+        <span id="abstract-full-1" class="abstract-full">
+            Our approach exploits the strength of Self-Attention Multi-Temporal Convolutional Networks (SAMTCN), which adeptly combine the distinct and complementary insights provided by EEG and EMG signals. The core of our methodology is the strategic application of self-attention mechanisms with multi-temporal convolutional architectures. This design choice allows our model to capture and analyse temporal patterns in multimodal data with unprecedented precision, significantly enhancing its ability to generalise to new, unseen data. The effectiveness of our approach is evidenced by the model's exceptional performance, achieving an accuracy of over 97% in recognising diverse hand gestures. This high level of accuracy highlights the model's potential to revolutionise how interactions are facilitated in rehabilitation contexts.
+        </span>
+        <span id="read-more-1" class="read-more" onclick="toggleAbstract(1)">Read more</span>
+        <span id="read-less-1" class="read-less" onclick="toggleAbstract(1)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/COINS61597.2024.10622144" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Exploring the synergies between collaborative robotics, digital twins, augmentation, and industry 5.0 for smart manufacturing: A state-of-the-art review</div>
+    <div class="publication-authors">Muhammad Hamza Zafar, Even Falkenberg Langås, Filippo Sanfilippo</div>
+    <div class="publication-venue">Robotics and Computer-Integrated Manufacturing, 2024</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> Industry 5.0 aims at establishing an inclusive, smart and sustainable production process that encourages human creativity and expertise by leveraging enhanced automation and machine intelligence.
+        <span id="abstract-full-2" class="abstract-full">
+            Collaborative robotics, or "cobotics",is a major enabling technology of Industry 5.0, which aspires at improving human dexterity by elevating robots to extensions of human capabilities and, ultimately, even as team members. A pivotal element that has the potential to operate as an interface for the teaming aspiration of Industry 5.0 is the adoption of novel technologies such as virtual reality (VR), augmented reality (AR), mixed reality (MR) and haptics, together known as "augmentation". Industry 5.0 also benefit from Digital Twins (DTs), which are digital representations of a physical assets that serves as their counterpart — or twins. Another essential component of Industry 5.0 is artificial intelligence (AI), which has the potential to create a more intelligent and efficient manufacturing process. In this study, a systematic review of the state of the art is presented to explore the synergies between cobots, DTs, augmentation, and Industry 5.0 for smart manufacturing. To the best of the author's knowledge, this is the first attempt in the literature to provide a comprehensive review of the synergies between the various components of Industry 5.0. This work aims at increasing the global efforts to realize the large variety of application possibilities offered by Industry 5.0 and to provide an up-to-date reference as a stepping-stone for new research and development within this field.
+        </span>
+        <span id="read-more-2" class="read-more" onclick="toggleAbstract(2)">Read more</span>
+        <span id="read-less-2" class="read-less" onclick="toggleAbstract(2)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/ICARA60736.2024.10553163" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Real-Time Gesture-Based Control of a Quadruped Robot Using a Stacked Convolutional Bi-Long Short-Term Memory (Bi-LSTM) Neural Network</div>
+    <div class="publication-authors">Muhammad Hamza Zafar, Even Falkenberg Langås, Filippo Sanfilippo</div>
+    <div class="publication-venue">10th International Conference on Automation, Robotics and Applications (ICARA), 2024</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> In recent years, advancements in robotics have driven a growing interest in enhancing human-robot interaction (HRI) for improved collaboration and effectiveness, particularly in critical scenarios like search and rescue (SAR) operations.
+        <span id="abstract-full-3" class="abstract-full">
+            This paper introduces an innovative approach for intuitive control of a quadruped robot, MiT Spot Robot, through hand gestures, using a Stacked Convolutional Bi-Long Short-Term Memory (Bi-LSTM) neural network model. To enable seamless and efficient human-robot interaction (HRI), this advanced model is integrated with the Robot Operating System (ROS) and the Gazebo simulation environment. We propose a robust hand gesture recognition system employing computer vision techniques that accurately interpret dynamic hand gestures in real time. The recognised gestures are mapped to specific locomotion and task commands, facilitating natural and intuitive control of the Quadruped Robot during search and rescue (SAR) operations. A comprehensive hyperparameter tuning approach using a grid search is implemented to optimise the model's performance. Our simulation-based experimentation in ROS/Gazebo validates the effectiveness and responsiveness of the proposed control scheme, showcasing its potential to enhance human-robot collaboration (HRC) in critical scenarios such as SAR missions.
+        </span>
+        <span id="read-more-3" class="read-more" onclick="toggleAbstract(3)">Read more</span>
+        <span id="read-less-3" class="read-less" onclick="toggleAbstract(3)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/ICARA60736.2024.10553163" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Human Trajectory Simulation in Industrial Settings Using the Ornstein-Uhlenbeck Process and Deep Learning Based Classification</div>
+    <div class="publication-authors">Even Falkenberg Langås, Muhammad Hamza Zafar, Svein Olav Nyberg, Filippo Sanfilippo</div>
+    <div class="publication-venue">10th IEEE International Conference on Automation, Robotics and Applications (ICARA), 2024</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> This paper presents a novel method of simulating human trajectories using the Ornstein-Uhlenbeck (OU) process in addition to deep learning (DL) based classification.
+        <span id="abstract-full-4" class="abstract-full">
+            The OU process is a stochastic process and is used in this paper to simulate the movement of a person on a typical factory floor. This work aims at developing systems that increase machines' awareness of people and make predictions about their behaviour to improve efficiency and safety in industrial settings. Sequences of simulated 2D coordinates of people moving on the factory floor are generated. Successively, these synthetic data are used to classify the path that the human is following, using a stacked long short-term memory (LSTM) network and a stacked bidirectional LSTM (BiLSTM) network. The results from this study suggest that, for such applications, it should be possible to predict future movements in 2D for human-robot collaboration (HRC) and teaming (HRT).
+        </span>
+        <span id="read-more-4" class="read-more" onclick="toggleAbstract(4)">Read more</span>
+        <span id="read-less-4" class="read-less" onclick="toggleAbstract(4)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/ICARA60736.2024.10553211" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Harnessing digital twins for human-robot teaming in industry 5.0: Exploring the ethical and philosophical implications</div>
+    <div class="publication-authors">Even Falkenberg Langås, Muhammad Hamza Zafar, Filippo Sanfilippo</div>
+    <div class="publication-venue">IEEE Symposium Series on Computational Intelligence (SSCI), 2023</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> In the era of Industry 5.0, the convergence of humans and robots in collaborative work environments has brought forth the concept of digital twins (DTs) of humans and robots.
+        <span id="abstract-full-5" class="abstract-full">
+            These virtual replicas, mirroring their physical counterparts, have become integral to the design and operation of complex systems. This paper aims to explore the ethical and philosophical implications associated with the design and use of DTs of humans and robots in human-robot collaboration (HRC), and even further in human-robot teaming (HRT). By examining the potential benefits, challenges, and risks, this research seeks to shed light on the responsible development and application of DTs in the context of Industry 5.0.
+        </span>
+        <span id="read-more-5" class="read-more" onclick="toggleAbstract(5)">Read more</span>
+        <span id="read-less-5" class="read-less" onclick="toggleAbstract(5)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/SSCI52147.2023.10372069" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">From rigid to hybrid/soft robots: Exploration of ethical and philosophical aspects in shifting from caged robots to human-robot teaming</div>
+    <div class="publication-authors">Minh Tuan Hua, Even Falkenberg Langås, Muhammad Hamza Zafar, Filippo Sanfilippo</div>
+    <div class="publication-venue">IEEE Symposium Series on Computational Intelligence (SSCI), 2023</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> This paper delves into the ethical, philosophical, and practical dimensions associated with the transition from caged robots to human-robot teaming (HRT).
+        <span id="abstract-full-6" class="abstract-full">
+            By exploring the evolving dynamics between humans and robots, this paper examines the ethical challenges, philosophical implications, and practical considerations that arise as collaboration and integration between humans and robots deepen. It emphasises the need for responsible design, implementation, and ethical frameworks to guide the development and deployment of human-robot teams. Particular focus is put into the ethical ramifications of choosing between rigid and soft actuators. The study underscores the significance of employing admittance and impedance control techniques to regulate interaction forces and compliance between humans and robots. By analysing the ethical implications of utilising soft actuators, the paper emphasises the potential advantages, such as enhanced safety and reduced risk of harm during close human-robot collaboration.
+        </span>
+        <span id="read-more-6" class="read-more" onclick="toggleAbstract(6)">Read more</span>
+        <span id="read-less-6" class="read-less" onclick="toggleAbstract(6)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1109/SSCI52147.2023.10372032" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Empowering human-robot interaction using sEMG sensor: Hybrid deep learning model for accurate hand gesture recognition</div>
+    <div class="publication-authors">Muhammad Hamza Zafar, Even Falkenberg Langås, Filippo Sanfilippo</div>
+    <div class="publication-venue">Results in Engineering, 2023</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> In this paper, a novel approach using a Henry Gas Solubility-based Stacked Convolutional Neural Network (HGS-SCNN) for hand gesture recognition using surface electromyography (sEMG) sensors is proposed.
+        <span id="abstract-full-7" class="abstract-full">
+            The stacked architecture of the CNN model helps to capture both low-level and high-level features, enabling effective representation learning. To begin, we generated a dataset comprising 600 samples of hand gestures. Next, we applied the Discrete Wavelet Transform (DWT) technique to extract features from the filtered sEMG signal. This step allowed us to capture both spatial and frequency information, enhancing the discriminative power of the extracted features. Extensive experiments are conducted to evaluate the performance of the proposed HGS-SCNN model. In addition, the obtained results are compared with state-of-the-art techniques, namely AOA-SCNN, GWO-SCNN, and WOA-SCNN. The comparative analysis demonstrates that the HGS-SCNN outperforms these existing methods, achieving an impressive accuracy of 99.3%. The experimental results validate the effectiveness of our proposed approach in accurately detecting hand gestures. The combination of DWT-based feature extraction and the HGS-SCNN model offers robust and reliable hand gesture recognition, thereby opening new possibilities for intuitive human-machine interaction and applications requiring gesture-based control.
+        </span>
+        <span id="read-more-7" class="read-more" onclick="toggleAbstract(7)">Read more</span>
+        <span id="read-less-7" class="read-less" onclick="toggleAbstract(7)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://doi.org/10.1016/j.rineng.2023.101639" class="publication-link">Read the paper</a>
+</div>
+
+<div class="publication">
+    <div class="publication-title">Pervasive and connected digital twins for edge computing enabled industrial applications</div>
+    <div class="publication-authors">Filippo Sanfilippo, Even Falkenberg Langås, Halima Zahra Bukhari, Stian Robstad</div>
+    <div class="publication-venue">2023</div>
+    <div class="publication-abstract">
+        <strong>Abstract:</strong> A digital twin (DT) is a digital representation of a physical asset that serves as its counterpart — or twin.
+        <span id="abstract-full-8" class="abstract-full">
+            DTs differ from static, three-dimensional models in that they are continuously updated with data from numerous sources. In one continually changing world of pervasive computing, where computational and human intelligence are expanding everywhere, DTs can be regarded as the backbone for addressing the synergy of software, devices, movable objects, networks, and people. In this paper, we present a novel perspective for designing, prototyping and testing pervasive and connected DTs for edge computing enabled industrial applications. The provided paradigm allows for the creation of computational models for cloud computing as well as the transmission of data and computational intelligence through analytic platforms. A case study is presented to demonstrate the possibilities of the suggested framework. According to the outlined findings, the proposed architecture contributes to effective maintenance and management of infrastructures and facilities.
+        </span>
+        <span id="read-more-8" class="read-more" onclick="toggleAbstract(8)">Read more</span>
+        <span id="read-less-8" class="read-less" onclick="toggleAbstract(8)" style="display: none;">Show less</span>
+    </div>
+    <a href="https://hdl.handle.net/10125/103455" class="publication-link">Read the paper</a>
+</div>

@@ -1,0 +1,182 @@
++++
+title = "Self Balancing Robot"
+date = "2020-12-12T00:00:00-00:00"
+summary = "A two-wheeled self balancing robot was assembled and programmed as part of the instrumentation course MAS506 within the mechatronics study program at the University of Agder."
+categories = ["projects"]
+tags = ["projects"]
+layout = "hyde-master"
+draft = false
++++
+
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Self Balancing Robot Project</title>
+        <style>
+            .container {
+                /* padding: 20px; */
+            }
+            
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                height: 0;
+                overflow: hidden;
+                margin-bottom: 30px;
+            }
+            
+            .video-container iframe {
+                position: absolute;
+                border-radius: 10px; 
+                max-width: 95%; 
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;    
+            }
+            
+            details {
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 20px;
+            }
+            
+            summary {
+                font-weight: bold;
+                cursor: pointer;
+            }
+            
+            ul {
+                margin-top: 10px;
+            }
+            
+            .image-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                border-radius: 20px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .image-caption {
+                font-size: 0.9em;
+                color: #666;
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+            }
+            
+            .grid-item {
+                padding: 20px;
+                background-color: white;
+                border-radius: 20px;
+            }
+            
+            .highlight-box {
+                background-color:  white;
+                border-left: 4px solid #82ccdd;
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- <h1>Self Balancing Robot Project</h1> -->
+            <p><em>University of Agder, 2020 - MAS506 Course</em></p>
+            
+            <!-- <div class="highlight-box"> -->
+                <p>This project involved the assembly and programming of a self-balancing robot. The system ran on a MyRIO embedded device programmed in LabVIEW. Several controllers were designed and tuned to make the robot balance, compensate for wheel friction, and control the position and heading. The robot was also programmed to follow a black line using computer vision.</p>
+            <!-- </div> -->
+
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/AZ8HnyVm6Bw" title="Self Balancing Robot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+    
+            <details open>
+                <summary>Equipment Used</summary>
+                <ul>
+                    <li>1x MyRIO embedded device</li>
+                    <li>2x Electric motors with gearbox and encoder</li>
+                    <li>1x Motor controller</li>
+                    <li>1x Gyro (Digilent PmodGYRO breakout board)</li>
+                    <li>1x 3s 11.1V 2200mAh LiPo battery</li>
+                    <li>1x Trust Exis Webcam</li>
+                    <li>2x Wheels with shaft connection</li>
+                </ul>
+            </details>
+    
+            <h2>Project Components</h2>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Motor Control System</h3>
+                    <p>The motor's velocity was controlled by a PWM signal, making it possible to steplessly control the velocity. Each motor was equipped with an optical encoder for measuring position and velocity. Friction compensation was implemented to account for differences between the motors.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Inertial Measurement Unit</h3>
+                    <p>An IMU consisting of the built-in accelerometer on the MyRIO and a Digilent PmodGYRO breakout board was used to measure the pitch and yaw angles. A complementary filter was implemented to fuse the sensors, providing accurate angle measurements.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Control System</h3>
+                    <p>A cascade controller was implemented for balancing the robot. The cascade controller used the robot's pitch angle and angular velocity as inputs and produced the desired wheel velocity as output. Additional controllers for velocity and turn rate were also implemented.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Camera Vision System</h3>
+                    <p>A Trust Exis webcam was used for line detection. The camera image was processed to detect black lines on the floor, allowing the robot to follow paths. Image processing included grayscale conversion, region of interest selection, and binary thresholding.</p>
+                </div>
+            </div>
+    
+            <div class="image-container">
+                <img src="controller.png" alt="Control system diagram for the self-balancing robot">
+                <p class="image-caption">Figure: Control system diagram showing the interconnection of heading control, velocity control, balance control, and friction compensation systems that enable the self-balancing robot to maintain stability while following designated paths.</p>
+            </div>
+
+            <!-- <h2>Key Innovations</h2> -->
+            
+            <div class="highlight-box">
+                <h3>Complementary Filter for Sensor Fusion</h3>
+                <p>A complementary filter was used to fuse the accelerometer and gyroscope data, combining the advantages of each sensor while minimizing their disadvantages. The filter used a balance parameter alpha of 0.98, which showed the best results for the accelerometer's long-term accuracy and the gyroscope's short-term precision.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Cascade Controller Design</h3>
+                <p>The balancing controller was implemented as a cascade controller with an outer PID controller using the pitch angle as feedback and an inner P controller using the angular velocity from the gyroscope. This design provided stable balance and responsive control.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Center of Gravity Optimization</h3>
+                <p>By strategically placing the battery at the top of the chassis, the center of gravity was raised, significantly improving stability. This made the robot easier to balance, similar to how a broom is easier to balance with the mass at the top.</p>
+            </div>
+
+            <h2>Results and Achievements</h2>
+            
+            <ul>
+                <li>The robot could successfully balance itself autonomously with minimal drift</li>
+                <li>Linear velocity could be controlled in both forward and backward directions</li>
+                <li>The robot could perform turns with a maximum rate of approximately 490°/s</li>
+                <li>Line following was successfully implemented with the camera vision system</li>
+                <li>The robot could recover from small disturbances and maintain balance</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Conclusion</h3>
+                <p>The project successfully demonstrated the implementation of a two-wheeled balancing robot with line-following capabilities. The combination of sensor fusion, control theory, and computer vision resulted in a stable and responsive system capable of autonomous navigation along predefined paths.</p>
+            </div>
+
+            <p class="pdf-link"><a href="self-balancing-robot.pdf" target="_blank">Download the full project report (PDF)</a></p>
+        </div>
+    </body>
+</html>

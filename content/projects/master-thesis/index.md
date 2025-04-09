@@ -1,5 +1,5 @@
 ---
-title: "Playing Fetch With an Industrial Robot [Master Thesis]"
+title: "Master Thesis: Playing Fetch With an Industrial Robot"
 date: "2021-06-01"
 summary: "Autonomous Pick-and-Place Procedure with an Industrial Robot Using Multiple 3D Sensors for Object Detection and Obstacle Avoidance"
 description: "This is a description"

@@ -1,5 +1,5 @@
 ---
-title: "Digital Twin of Water Treatment Plant [Industry]"
+title: "Digital Twin of Water Treatment Plant"
 date: "2023-01-03"
 summary: "At Twilligent, I lead the development of a digital twin of a water treatment plant for Slamrensing AS, who delivers mobile treatment plants for construction sites. This tool helps construction workers do troubleshooting and maintenance with an intuitive 3D interface.  "
 description: "This is a description"

@@ -1,45 +1,325 @@
 +++
-title = "Predicting Human Trajectories in Industrial Settings" 
-date = "2025-03-01T00:00:00-00:00"
-summary = "This project addresses a central challenge in Industry 5.0: enabling safe and efficient human-robot collaboration. By combining LiDAR-based human tracking with AI-driven prediction models, we can anticipate worker movement and prepare collaborative workstations in advance. This reduces stall time and enhances workplace safety without relying on bulky safety cages."
+title = "PhD Project: Human Trajectory Prediction in Industrial Settings"
+date = "2025-04-09T00:00:00-00:00"
+summary = "This research focuses on developing systems that increase machines' awareness of human operators in industrial environments, enabling safer and more efficient human-robot collaboration. By accurately predicting human trajectories, we can enhance safety, reduce the need for traditional safety cages, and increase productivity through proactive workstation preparation."
 categories = ["projects"]
 tags = ["projects"]
 layout = "hyde-master"
+draft = false
 +++
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Predicting Human Trajectories in Industry 5.0</title>
-  </head>
-  <body>
-    A research paper presenting the work is currently under review in IEEE Transactions on Cybernetics.
-
-    <h2>Key Highlights</h2>
-    <ul>
-      <li>Real-world data was collected in a 26m × 20m factory environment using an advanced LiDAR system.</li>
-      <li>A long short-term memory (LSTM) neural network was used to predict the workstation a person is heading toward, up to 3 seconds in advance.</li>
-      <li>To overcome limited real-world data, two data augmentation techniques were used: TimeGAN (AI-generated trajectories) and a traditional Ornstein-Uhlenbeck process (statistical simulations).</li>
-      <li>Combining synthetic and real data improved accuracy from 87.5% to 95.6% for predictions 3 seconds ahead.</li>
-    </ul>
-
-    <h2>Why It Matters</h2>
-    <p>
-      In smart factories, predicting where workers are going lets machines react in real time—either by preparing tools or adjusting speed to avoid collisions. This makes factories safer, more efficient, and better aligned with human needs.
-    </p>
-
-    <h2>Challenges Tackled</h2>
-    <ul>
-      <li><strong>Data scarcity:</strong> Human movement data is hard to collect. The team addressed this with synthetic data generation and transfer learning.</li>
-      <li><strong>Real-time accuracy:</strong> The model can correctly predict a person’s destination up to 3 seconds before they arrive with >95% accuracy.</li>
-      <li><strong>Privacy:</strong> The LiDAR setup anonymises data, respecting participant privacy.</li>
-    </ul>
-
-    <h2>Technologies Used</h2>
-    <ul>
-      <li>LiDAR-based human tracking</li>
-      <li>Stacked LSTM network for prediction</li>
-      <li>TimeGAN and OU process for synthetic data generation</li>
-    </ul>
-  </body>
+    <head>
+        <title>PhD Project: Human Trajectory Prediction in Industrial Settings</title>
+        <style>
+            /* body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+                max-width: 1200px;
+                margin: 0 auto;
+            } */
+            
+            h1, h2, h3 {
+                color: #2c3e50;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                height: 0;
+                overflow: hidden;
+                margin-bottom: 30px;
+            }
+            
+            .video-container iframe {
+                position: absolute;
+                border-radius: 10px; 
+                max-width: 95%; 
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;    
+            }
+            
+            audio {
+                width: 100%;
+                max-width: 500px;
+                margin: 20px 0;
+            }
+            
+            details {
+                margin-bottom: 20px;
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+            }
+            
+            summary {
+                font-weight: bold;
+                cursor: pointer;
+            }
+            
+            ul {
+                margin-top: 10px;
+            }
+            
+            .publication {
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                border-left: 4px solid #3498db;
+            }
+            
+            .publication-title {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            
+            .publication-authors {
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+            .publication-venue {
+                color: #666;
+                margin-bottom: 10px;
+            }
+            
+            .publication-abstract {
+                font-size: 0.9em;
+                margin-top: 10px;
+            }
+            
+            .abstract-full {
+                display: none;
+                margin-top: 5px;
+            }
+            
+            .read-more, .read-less {
+                color: #3498db;
+                font-weight: bold;
+                cursor: pointer;
+                margin-left: 5px;
+            }
+            
+            .read-more:hover, .read-less:hover {
+                text-decoration: underline;
+            }
+            .image-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .image-caption {
+                font-size: 0.9em;
+                color: #666;
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+            }
+            
+            .grid-item {
+                padding: 15px;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+            }
+            
+            .highlight-box {
+                background-color: #e8f4f8;
+                border-left: 4px solid #3498db;
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 0 5px 5px 0;
+            }
+        </style>
+        <script>
+          function toggleAbstract(id) {
+              var fullText = document.getElementById('abstract-full-' + id);
+              var readMoreBtn = document.getElementById('read-more-' + id);
+              var readLessBtn = document.getElementById('read-less-' + id);
+              
+              if (fullText.style.display === 'none' || fullText.style.display === '') {
+                  fullText.style.display = 'inline';
+                  readMoreBtn.style.display = 'none';
+                  readLessBtn.style.display = 'inline';
+              } else {
+                  fullText.style.display = 'none';
+                  readMoreBtn.style.display = 'inline';
+                  readLessBtn.style.display = 'none';
+              }
+          }
+      </script>
+    </head>
+    <body>
+        <div class="container">
+            <!-- <h1>Human Trajectory Prediction in Industrial Settings</h1>
+            <h3>PhD Research Project by Even Falkenberg Langås</h3> -->
+            <!-- <div class="highlight-box">
+                <p>This research focuses on developing systems that increase machines' awareness of human operators in industrial environments, enabling safer and more efficient human-robot collaboration. By accurately predicting human trajectories, we can enhance safety, reduce the need for traditional safety cages, and increase productivity through proactive workstation preparation.</p>
+            </div> -->
+            <div class="image-container">
+                <img src="./proposed_framework.png" alt="Human trajectory prediction system visualization">
+                <p class="image-caption">Visualization of the human trajectory prediction system in a factory setting. The system tracks previous trajectories (green) and predicts future movement (red), enabling proactive workstation preparation and non-invasive mobile robot navigation.</p>
+            </div>
+    
+            <details open>
+                <summary>Research Objectives</summary>
+                <ul>
+                    <li>Develop algorithms for accurate prediction of human movement in industrial environments</li>
+                    <li>Enable machines to predict human intentions for enhanced safety and efficiency</li>
+                    <li>Reduce the need for traditional safety cages through intelligent trajectory prediction</li>
+                    <li>Increase productivity by proactively activating collaborative workstations before human arrival</li>
+                    <li>Create solutions that work with limited real-world training data through transfer learning and data augmentation</li>
+                </ul>
+            </details>
+    
+            <details>
+                <summary>Research Challenges Addressed</summary>
+                <ul>
+                    <li>Limited availability of real-world human trajectory data in industrial settings</li>
+                    <li>Difficulty in capturing the complexity and variability of human movement patterns</li>
+                    <li>Need for real-time predictions that are both accurate and computationally efficient</li>
+                    <li>Balancing privacy concerns with data collection needs</li>
+                    <li>Creating models that generalize across different industrial environments</li>
+                </ul>
+            </details>
+    
+            <h2>Research Approach</h2>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Data Collection</h3>
+                    <p>Using a state-of-the-art LiDAR system with reflective mirrors that extend the field of view, covering a 26m × 20m industrial floor. Human detection algorithms identify and track operators as they move between workstations.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Data Simulation</h3>
+                    <p>Developing synthetic human trajectory data using the Ornstein-Uhlenbeck stochastic process and TimeGAN (Generative Adversarial Networks for time series data) to overcome limited data availability.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Prediction Models</h3>
+                    <p>Implementing advanced deep learning architectures including LSTM networks, Transformer models, and other sequence prediction techniques to forecast human movements with high accuracy.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Transfer Learning</h3>
+                    <p>Pre-training models on synthetic data before fine-tuning on real-world data to improve performance in data-scarce scenarios.</p>
+                </div>
+            </div>
+    
+            <div class="image-container">
+                <img src="./heatmap.png" alt="Human trajectory dataset visualization">
+                <p class="image-caption">Heatmap visualization of the human trajectory dataset collected from a real-world industrial environment, showing transition paths between six workstations.</p>
+            </div>
+    
+            <h2>Key Innovations</h2>
+            
+            <div class="highlight-box">
+                <h3>Transformer-Based Sequence-to-Sequence Model</h3>
+                <p>A novel architecture for human trajectory prediction that outperforms traditional recurrent models by leveraging self-attention mechanisms and positional encoding to capture both short-term and long-term dependencies in movement patterns.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Transfer Learning with Data Augmentation</h3>
+                <p>Combining synthetic trajectory generation with transfer learning to significantly improve prediction accuracy when real-world data is limited. Our approach showed an overall accuracy gain of 4.8 percentage points compared to training on real-world data alone.</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3>Real-Time Prediction Framework</h3>
+                <p>Predicting target workstations with 95.6% accuracy three seconds in advance, enabling systems to proactively prepare for human arrival and optimize collaborative workflows.</p>
+            </div>
+    
+            <div class="image-container" style="text-align: center;">
+                <img src="results.png" alt="Comparative trajectory prediction results" width="50%">
+                <p class="image-caption">Comparative results of trajectory predictions using different algorithms. The transformer-based model (top) shows significantly better performance than traditional approaches.</p>
+            </div>
+    
+            <h2>Research Publications</h2>
+            <div class="publication">
+              <div class="publication-title">Human Trajectory Simulation in Industrial Settings Using the Ornstein-Uhlenbeck Process and Deep Learning Based Classification</div>
+              <div class="publication-authors">Even Falkenberg Langås, Muhammad Hamza Zafar, Svein Olav Nyberg, Filippo Sanfilippo</div>
+              <div class="publication-venue">10th IEEE International Conference on Automation, Robotics and Applications (ICARA), 2024</div>
+              <div class="publication-abstract">
+                  <strong>Abstract:</strong> This paper presents a novel method of simulating human trajectories using the Ornstein-Uhlenbeck (OU) process in addition to deep learning (DL) based classification.
+                  <span id="abstract-full-1" class="abstract-full">
+                      The OU process is a stochastic process and is used in this paper to simulate the movement of a person on a typical factory floor. This work aims at developing systems that increase machines' awareness of people and make predictions about their behaviour to improve efficiency and safety in industrial settings. Sequences of simulated 2D coordinates of people moving on the factory floor are generated. Successively, these synthetic data are used to classify the path that the human is following, using a stacked long short-term memory (LSTM) network and a stacked bidirectional LSTM (BiLSTM) network. The results from this study suggest that, for such applications, it should be possible to predict future movements in 2D for human-robot collaboration (HRC) and teaming (HRT).
+                  </span>
+                  <span id="read-more-1" class="read-more" onclick="toggleAbstract(1)">Read more</span>
+                  <span id="read-less-1" class="read-less" onclick="toggleAbstract(1)" style="display: none;">Show less</span>
+              </div>
+          </div>
+          
+          <div class="publication">
+              <div class="publication-title">Advancing Human Trajectory Prediction in Industrial Settings with Transfer Learning and Data Augmentation Using an LSTM Network</div>
+              <div class="publication-authors">Even Falkenberg Langås, Atle Aalerud, Svein Olav Nyberg, Muhammad Hamza Zafar, Daniel Hagen, Filippo Sanfilippo</div>
+              <div class="publication-venue">Submitted to IEEE Transactions on Cybernetics, 2025</div>
+              <div class="publication-abstract">
+                  <strong>Abstract:</strong> The successful realisation of Industry 5.0 relies on seamless collaboration between humans and robots in shared workspaces.
+                  <span id="abstract-full-2" class="abstract-full">
+                      This paper investigates human trajectory prediction (HTP) in a factory setting to enhance safety, productivity, and adaptability in human-machine environments. Using a state-of-the-art light detection and ranging (LiDAR) system with reflective mirrors to extend the field of view, motion data are collected across a 26 m × 20 m indoor industrial floor. Human trajectories are classified to predict workstation transitions using a stacked long-short term memory (LSTM) network. To address the challenges of limited real-world data, transfer learning is applied by first training the model on synthetically generated trajectories. The paper compares a traditional stochastic method, specifically the Ornstein-Uhlenbeck (OU) process, with a modern learning based method, represented by a timeseries generative adversarial network (TimeGAN). Further on, the algorithm is fine-tuned on the real-world dataset. The comparison show that in data-scarce scenarios, OU outperforms TimeGAN in most metrics. The LSTM model trained on OU-based data and real-world data shows an overall accuracy gain of 4.8 percentage points compared to training on real-world data only. It is able to predict the goal workstation three seconds in advance with an accuracy of 95.6%, demonstrating the potential for predictive models to improve workplace operations by reducing stall time, optimising workstation readiness, and reducing the need for traditional safety cages.
+                  </span>
+                  <span id="read-more-2" class="read-more" onclick="toggleAbstract(2)">Read more</span>
+                  <span id="read-less-2" class="read-less" onclick="toggleAbstract(2)" style="display: none;">Show less</span>
+              </div>
+          </div>
+          
+          <div class="publication">
+              <div class="publication-title">A Transformer-Based Sequence-to-Sequence Model for Indoor Human Trajectory Prediction in a Factory Setting</div>
+              <div class="publication-authors">Under preparation</div>
+              <div class="publication-abstract">
+                  <strong>Abstract:</strong> In modern manufacturing environments, the safe and efficient coexistence of humans and mobile robots is essential.
+                  <span id="abstract-full-3" class="abstract-full">
+                      This paper presents a transformer-based sequence-to-sequence (Seq2seq) model designed for human trajectory prediction (HTP) on a factory floor, serving as a critical component for future robot navigation systems. By accurately forecasting human movements using real-world trajectory data, our approach lays the groundwork for mobile robots to efficiently navigate complex environments without interfering with or disturbing human activities. The model leverages advanced techniques including normalisation, positional encoding, and multi-head attention within transformer blocks—to capture both short- and long-term dependencies in human motion. Evaluation using metrics such as Mean Squared Error, Mean Absolute Error, and the coefficient of determination (R²) demonstrates significant improvements over traditional recurrent models. While this work focuses on the predictive model, its implications extend to the development of intelligent robotic systems that enhance operational safety and productivity through improved human–robot interaction.
+                  </span>
+                  <span id="read-more-3" class="read-more" onclick="toggleAbstract(3)">Read more</span>
+                  <span id="read-less-3" class="read-less" onclick="toggleAbstract(3)" style="display: none;">Show less</span>
+              </div>
+          </div>
+    
+            <h2>Industrial Applications</h2>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Enhanced Safety</h3>
+                    <p>Enabling hazardous machinery to slow down before a human approaches, reducing the risk of accidents without the need for physical safety barriers.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Improved Efficiency</h3>
+                    <p>Collaborative workstations can be proactively activated before the human operator arrives, eliminating wait times and increasing productivity.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Space Optimization</h3>
+                    <p>Reducing or eliminating the need for traditional safety cages increases usable shop floor space in manufacturing environments.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Mobile Robot Navigation</h3>
+                    <p>Providing trajectory predictions for mobile robots to plan efficient paths that avoid disturbing or interfering with human activities.</p>
+                </div>
+            </div>
+    
+            <h2>Possible Future Research Directions</h2>
+            
+            <ul>
+                <li>Building larger and more diverse datasets to improve model generalization across different industrial environments</li>
+                <li>Integrating the prediction system with real-time robot control for adaptive collaboration</li>
+            </ul>
+        </div>
+    </body>
 </html>

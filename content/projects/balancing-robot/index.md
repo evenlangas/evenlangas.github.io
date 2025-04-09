@@ -1,5 +1,5 @@
 ---
-title: "Self Balancing Robot [Student]"
+title: "Self Balancing Robot"
 date: "2020-12-12"
 summary: "A two-wheeled self balancing robot was assembled and programmed as part of the instrumentation course MAS506 within the mechatronics study program at the University of Agder."
 description: "This is a description"

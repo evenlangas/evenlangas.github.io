@@ -1,0 +1,542 @@
++++
+title = "High School Project: Jostein's House Game"
+date = "2014-10-31T00:00:00-00:00"
+summary = "An interactive point-and-click adventure game where you explore a haunted house and solve puzzles"
+categories = ["projects"]
+tags = ["projects", "games"]
+layout = "hyde-master"
+draft = false
++++
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Jostein's House</title>
+    <style>
+        body{
+            background: #333333;
+            max-width: 1280px;
+            margin: 0 auto;
+            color: antiquewhite;
+        }
+        .game{
+            background-image: url("bilder/bakgrunn.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            max-width: 1280px;
+        }
+        canvas{
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            display: block;
+            width: 800px;
+            height: 615px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game">
+<canvas id="minCanvas" width="800" height="615"></canvas>
+</div>
+<script>
+
+    var minCanvas=document.getElementById("minCanvas");
+    var ctx=minCanvas.getContext("2d");
+
+    ctx.textAlign="center";
+    ctx.textBaseline="middle";
+    ctx.strokeStyle="#cd1404";
+    ctx.fillStyle="#cd1404";
+    ctx.font="20pt Comic Sans MS";
+    ctx.fillText("Klikk for a starte",minCanvas.width/2,220);
+    ctx.fill();
+    ctx.strokeText("Klikk for a starte",minCanvas.width/2,220);
+
+    var room0 = new Image();
+    var room1 = new Image();
+    var flaggermus = new Image();
+    var room2 = new Image();
+    var edderkopp = new Image();
+    var spindelsvev = new Image();
+    var room4 = new Image();
+    var room5 = new Image();
+    var room6 = new Image();
+    var room7 = new Image();
+    var room8 = new Image();
+    var bombe0 = new Image();
+    var bombe1 = new Image();
+    var bombe2 = new Image();
+    var bombe3 = new Image();
+    var bombe4 = new Image();
+    var bombe5 = new Image();
+    var bombe6 = new Image();
+    var bombe7 = new Image();
+    var harddisk = new Image();
+    var telefon0 = new Image();
+    var telefon1 = new Image();
+    var himmel = new Image();
+    var fly = new Image();
+    var whitehouse0 = new Image();
+    var whitehouse1 = new Image();
+    var medalje = new Image();
+    var kiste = new Image();
+    var kniv = new Image();
+    var hand = new Image();
+    var nokkel = new Image();
+    var sikte = new Image();
+    var bombehand = new Image();
+    var rulletekst = new Image();
+
+    room0.src="bilder/house.jpg";
+    room1.src="bilder/rom1.jpg";
+    flaggermus.src="bilder/flaggermus.png";
+    room2.src="bilder/rom2.jpg";
+    edderkopp.src="bilder/edderkopp.png";
+    spindelsvev.src="bilder/spindelsvev.png";
+    room4.src="bilder/dust.jpg";
+    room5.src="bilder/dust2.jpg";
+    room6.src="bilder/dust3.jpg";
+    room7.src="bilder/dust4.jpg";
+    room8.src="bilder/dust5.jpg";
+    bombe0.src="bilder/bombe/bombe0.jpg";
+    bombe1.src="bilder/bombe/bombe1.jpg";
+    bombe2.src="bilder/bombe/bombe2.jpg";
+    bombe3.src="bilder/bombe/bombe3.jpg";
+    bombe4.src="bilder/bombe/bombe4.jpg";
+    bombe5.src="bilder/bombe/bombe5.jpg";
+    bombe6.src="bilder/bombe/bombe6.jpg";
+    bombe7.src="bilder/bombe/bombe7.jpg";
+    harddisk.src="bilder/harddisk.jpg";
+    telefon0.src="bilder/telefon0.jpg";
+    telefon1.src="bilder/telefon1.jpg";
+    himmel.src="bilder/himmel.jpg";
+    fly.src="bilder/fly.png";
+    whitehouse0.src="bilder/whitehouse0.jpg";
+    whitehouse1.src="bilder/whitehouse1.jpg";
+    medalje.src="bilder/medalje.png";
+    kiste.src="bilder/kiste.jpg";
+    kniv.src="bilder/kniv.png";
+    hand.src="bilder/hand.png";
+    nokkel.src="bilder/nokkel.png";
+    sikte.src="bilder/sikte.png";
+    bombehand.src="bilder/bombehand.png";
+    rulletekst.src="bilder/rulletekst.png";
+
+    var ROOM0 = 0;
+    var ROOM1 = 1;
+    var ROOM2 = 2;
+    var KISTE = 3;
+    var ROOM3 = 4;
+    var ROOM4 = 5;
+    var ROOM5 = 6;
+    var ROOM6 = 7;
+    var ROOM7 = 8;
+    var ROOM8 = 9;
+    var BOMBE0 = 10;
+    var BOMBE1 = 11;
+    var BOMBE2 = 12;
+    var BOMBE3 = 13;
+    var BOMBE4 = 14;
+    var BOMBE5 = 15;
+    var BOMBE6 = 16;
+    var HARDDISK = 17;
+    var ROOM9 = 18;
+    var ROOM10 = 19;
+    var FLY = 20;
+    var WHITEHOUSE0 = 21;
+    var WHITEHOUSE1 = 22;
+    var tilstand = null;
+
+    var musx;
+    var musy;
+
+    var dorData = [574,382,611,446];
+    var djevelData = [577,328,628,365];
+    var kisteData = [533,182,579,220];
+    var nokkelData = [266,385,573,480];
+    var nokkelhullData = [399,183,413,196];
+    var awpData = [704,311,740,543];
+    var monster0Data = [424,222,503,279];
+    var monster1Data = [31,110,116,198];
+    var monster2Data = [265,260,370,334];
+    var bombeData = [309,407,354,433];
+    var bombe0Data = [333,473,404,550];
+    var bombe1Data = [507,354,554,393];
+    var bombe2Data = [438,419,486,466];
+    var bombe3Data = [516,420,566,465];
+    var bombe4Data = [439,567,486,612];
+    var bombe5Data = [445,503,487,542];
+    var harddiskData =[546,36,761,356];
+    var svarData = [377,458,456,540];
+    var leggpaData = [483,444,579,536];
+
+    var voice0 = document.createElement("audio");
+    var voice1 = document.createElement("audio");
+    var voice2 = document.createElement("audio");
+    var voice3 = document.createElement("audio");
+    var ringetone = document.createElement("audio");
+    var flyLyd = document.createElement("audio");
+    var brol = document.createElement("audio");
+    var key = document.createElement("audio");
+    var obamatlf = document.createElement("audio");
+    var obamatale = document.createElement("audio");
+
+    voice0.src = "lydeffekter/voice0.wav";
+    voice1.src = "lydeffekter/voice1.wav";
+    voice2.src = "lydeffekter/voice2.wav";
+    voice3.src = "lydeffekter/voice3.wav";
+    ringetone.src = "lydeffekter/ringetone.mp3";
+    flyLyd.src = "lydeffekter/fly.mp3";
+    brol.src = "lydeffekter/brol.wav";
+    key.src = "lydeffekter/key.wav";
+    obamatlf.src = "lydeffekter/obamatlf.mp3";
+    obamatale.src = "lydeffekter/obamatale.wav"
+
+    minCanvas.onclick=function(){
+        console.log(musx + ' ' + musy);
+        if (tilstand == null){
+            voice0.play();
+            tilstand = ROOM0;
+        }
+        else if (tilstand == ROOM0){
+            if (musx >= dorData[0] && musx <= dorData[2] && musy >= dorData[1] && musy <= dorData[3]) {
+                voice0.pause();
+                voice1.play();
+                brol.play();
+                brol.volume = 0.05;
+                tilstand = ROOM1;
+            }
+        }
+        else if(tilstand==ROOM1){
+            if (musx >= djevelData[0] && musx <= djevelData[2] && musy >= djevelData[1] && musy <= djevelData[3]) {
+                voice1.pause();
+                brol.pause();
+                voice2.play();
+                tilstand = ROOM2;
+            }
+        }
+        else if(tilstand==ROOM2){
+            if (musx >=kisteData[0] && musx <=kisteData[2] && musy >=kisteData[1] && musy <=kisteData[3]) {
+                tilstand=KISTE;
+            }
+        }
+        else if(tilstand==KISTE){
+            if (musx >=nokkelData[0] && musx <=nokkelData[2] && musy >=nokkelData[1] && musy <=nokkelData[3]) {
+                tilstand = ROOM3;
+            }
+        }
+        else if(tilstand==ROOM3){
+            if (musx >=nokkelhullData[0] && musx <=nokkelhullData[2] && musy >=nokkelhullData[1] && musy <=nokkelhullData[3]) {
+                voice2.pause();
+                key.play();
+                voice3.play();
+                tilstand = ROOM4;
+
+            }
+        }
+        else if(tilstand==ROOM4){
+            if (musx >=awpData[0] && musx <=awpData[2] && musy >=awpData[1] && musy <=awpData[3]) {
+                tilstand = ROOM5;
+            }
+        }
+        else if(tilstand==ROOM5){
+            if (musx >=monster0Data[0] && musx <=monster0Data[2] && musy >=monster0Data[1] && musy <=monster0Data[3]) {
+                var poff = document.createElement("audio");
+                poff.src = "lydeffekter/poff.wav";
+                poff.play();
+                tilstand = ROOM6;
+            }
+        }
+        else if(tilstand==ROOM6){
+            if (musx >=monster1Data[0] && musx <=monster1Data[2] && musy >=monster1Data[1] && musy <=monster1Data[3]) {
+                var poff = document.createElement("audio");
+                poff.src = "lydeffekter/poff.wav";
+                poff.play();
+                tilstand = ROOM7;
+            }
+        }
+        else if(tilstand==ROOM7){
+            if (musx >=monster2Data[0] && musx <=monster2Data[2] && musy >=monster2Data[1] && musy <=monster2Data[3]) {
+                var poff = document.createElement("audio");
+                poff.src = "lydeffekter/poff.wav";
+                poff.play();
+                tilstand = ROOM8;
+            }
+        }
+        else if(tilstand==ROOM8){
+            if (musx >=bombeData[0] && musx <=bombeData[2] && musy >=bombeData[1] && musy <=bombeData[3]) {
+                tilstand = BOMBE0;
+            }
+        }
+        else if(tilstand==BOMBE0){
+            if (musx >=bombe0Data[0] && musx <=bombe0Data[2] && musy >=bombe0Data[1] && musy <=bombe0Data[3]) {
+                var bip = document.createElement("audio");
+                bip.src = "lydeffekter/bip.wav";
+                bip.play();
+                tilstand = BOMBE1;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+
+        else if(tilstand==BOMBE1){
+            if (musx >=bombe1Data[0] && musx <=bombe1Data[2] && musy >=bombe1Data[1] && musy <=bombe1Data[3]) {
+                var bop = document.createElement("audio");
+                bop.src = "lydeffekter/bop.wav";
+                bop.play();
+                tilstand = BOMBE2;
+
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==BOMBE2){
+            if (musx >=bombe2Data[0] && musx <=bombe2Data[2] && musy >=bombe2Data[1] && musy <=bombe2Data[3]) {
+                var bip = document.createElement("audio");
+                bip.src = "lydeffekter/bip.wav";
+                bip.play();
+                tilstand = BOMBE3;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==BOMBE3){
+            if (musx >=bombe2Data[0] && musx <=bombe2Data[2] && musy >=bombe2Data[1] && musy <=bombe2Data[3]) {
+                var bip = document.createElement("audio");
+                bip.src = "lydeffekter/bip.wav";
+                bip.play();
+                tilstand = BOMBE4;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==BOMBE4){
+            if (musx >=bombe3Data[0] && musx <=bombe3Data[2] && musy >=bombe3Data[1] && musy <=bombe3Data[3]) {
+                var bop = document.createElement("audio");
+                bop.src = "lydeffekter/bop.wav";
+                bop.play();
+                tilstand = BOMBE5;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==BOMBE5){
+            if (musx >=bombe4Data[0] && musx <=bombe4Data[2] && musy >=bombe4Data[1] && musy <=bombe4Data[3]) {
+                var bip = document.createElement("audio");
+                bip.src = "lydeffekter/bip.wav";
+                bip.play();
+                tilstand = BOMBE6;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==BOMBE6){
+            if (musx >=bombe5Data[0] && musx <=bombe5Data[2] && musy >=bombe5Data[1] && musy <=bombe5Data[3]) {
+                var bop = document.createElement("audio");
+                bop.src = "lydeffekter/bop.wav";
+                bop.play();
+                tilstand = HARDDISK;
+            }
+            else {
+                var feil = document.createElement("audio");
+                feil.src = "lydeffekter/feil.wav";
+                feil.play();
+            }
+        }
+        else if(tilstand==HARDDISK){
+            if (musx >=harddiskData[0] && musx <=harddiskData[2] && musy >=harddiskData[1] && musy <=harddiskData[3]) {
+                ringetone.play();
+                tilstand = ROOM9;
+            }
+        }
+        else if(tilstand==ROOM9){
+            if (musx >=svarData[0] && musx <=svarData[2] && musy >=svarData[1] && musy <=svarData[3]) {
+                ringetone.pause();
+                obamatlf.play();
+                tilstand = ROOM10;
+            }
+        }
+        else if(tilstand==ROOM10){
+            if (musx >=leggpaData[0] && musx <=leggpaData[2] && musy >=leggpaData[1] && musy <=leggpaData[3]) {
+                obamatlf.pause();
+                flyLyd.play();
+                tilstand = FLY;
+            }
+        }
+
+        else if(tilstand==WHITEHOUSE0){
+            obamatale.play();
+            tilstand = WHITEHOUSE1;
+        }
+        tegn();
+    };
+
+    var flagger_x = 650;
+    var flagger_y = 500;
+    var edder_x = 100;
+    var edder_y = 0;
+    var vev_x = 125;
+    var vev_y = -990;
+    var fly_x = 0;
+    var fly_y = 100;
+    var rull_x = 0;
+    var rull_y = 1350;
+    var medalje_y = 350;
+    var medalje_x = 504;
+
+function tegn(){
+    if (tilstand == ROOM0){
+
+        ctx.drawImage(room0,0,0,800,615);
+
+    }
+    else if(tilstand==ROOM1){
+        ctx.drawImage(room1,0,0,800,615);
+        ctx.drawImage(kniv,musx-10,musy-70);
+
+    }
+    else if (tilstand == ROOM2){
+        ctx.drawImage(room2, 0, 0, 800, 615);
+        ctx.drawImage(flaggermus,flagger_x,flagger_y);
+
+        flagger_y -=3;
+        flagger_x +=1;
+    }
+    else if (tilstand == KISTE){
+        ctx.drawImage(kiste,0,0,800,615);
+        ctx.drawImage(hand,musx-70,musy-70);
+    }
+    else if (tilstand == ROOM3){
+        ctx.drawImage(room2,0,0,800,615);
+        ctx.drawImage(nokkel,musx-50,musy-10);
+        ctx.drawImage(edderkopp,edder_x,edder_y);
+        ctx.drawImage(spindelsvev, vev_x,vev_y);
+        edder_y +=0.1;
+        vev_y +=0.1;
+        if (vev_y > -790) vev_y = -790;
+        if (edder_y > 200) edder_y = 200;
+    }
+    else if (tilstand == ROOM4){
+        ctx.drawImage(room4,0,0,800,615);
+    }
+    else if (tilstand == ROOM5){
+        ctx.drawImage(room5,0,0,800,615);
+        ctx.drawImage(sikte,musx-800,musy-615);
+    }
+    else if (tilstand == ROOM6){
+        ctx.drawImage(room6,0,0,800,615);
+        ctx.drawImage(sikte,musx-800,musy-615);
+    }
+    else if (tilstand == ROOM7){
+        ctx.drawImage(room7,0,0,800,615);
+        ctx.drawImage(sikte,musx-800,musy-615);
+    }
+    else if (tilstand == ROOM8){
+        ctx.drawImage(room8,0,0,800,615);
+    }
+    else if (tilstand == BOMBE0){
+        ctx.drawImage(bombe0,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE1){
+        ctx.drawImage(bombe1,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE2){
+        ctx.drawImage(bombe2,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE3){
+        ctx.drawImage(bombe3,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE4){
+        ctx.drawImage(bombe4,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE5){
+        ctx.drawImage(bombe5,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == BOMBE6){
+        ctx.drawImage(bombe6,0,0,800,615);
+        ctx.drawImage(bombehand,musx-100,musy-100)
+    }
+    else if (tilstand == HARDDISK){
+        ctx.drawImage(harddisk,0,0,800,615);
+        ctx.drawImage(hand,musx-70,musy-70)
+    }
+    else if (tilstand == ROOM9){
+        ctx.drawImage(telefon0,0,0,800,615);
+        ctx.drawImage(bombehand,musx-70,musy-70)
+    }
+    else if (tilstand == ROOM10){
+        ctx.drawImage(telefon1,0,0,800,615);
+        ctx.drawImage(bombehand,musx-70,musy-70)
+    }
+    else if (tilstand == FLY){
+        ctx.drawImage(himmel,0,0,800,615);
+
+        ctx.drawImage(fly,fly_x,fly_y);
+        fly_x +=0.1;
+        if (fly_x > 900)tilstand=WHITEHOUSE0;
+    }
+    else if (tilstand==WHITEHOUSE0){
+        flyLyd.pause();
+        ctx.drawImage(whitehouse0,0,0,800,615);
+        ctx.textAlign="center";
+        ctx.textBaseline="middle";
+        ctx.strokeStyle="#730000";
+        ctx.lineWidth=2;
+        ctx.fillStyle="#FFFFFF";
+        ctx.font="30pt Comic Sans MS";
+        ctx.fillText("Klikk for å motta æresmedaljen!",minCanvas.width/2,50);
+        ctx.fill();
+        ctx.strokeText("Klikk for å motta æresmedaljen!",minCanvas.width/2,50);
+
+    }
+    else if (tilstand == WHITEHOUSE1){
+        ctx.drawImage(whitehouse0,0,0,800,615);
+        ctx.drawImage(medalje,medalje_x,medalje_y);
+        ctx.drawImage(rulletekst,rull_x,rull_y);
+        medalje_y +=0.01;
+        if (medalje_y>439) medalje_y = 440;
+        rull_y -=0.05;
+    }
+
+    requestAnimationFrame(tegn);
+
+}
+
+minCanvas.addEventListener("mousemove",function(evt){
+    musx = evt.clientX - minCanvas.getBoundingClientRect().left;
+    musy = evt.clientY - minCanvas.getBoundingClientRect().top;
+});
+</script>
+</body>
+</html>

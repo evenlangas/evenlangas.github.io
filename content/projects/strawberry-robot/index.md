@@ -1,5 +1,5 @@
 ---
-title: "Strawberry Picking Robot [Student]"
+title: "Strawberry Picking Robot"
 date: "2020-12-01"
 summary: "A strawberry picking robot was made and it passed the test in the predefined artificial strawberry field. The software proved to be reliable with a finite-state machine controlling the program flow. In addition, the picking sequence was consistent thanks to the tailored vision algorithm."
 description: "This is a description"

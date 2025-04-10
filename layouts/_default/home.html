@@ -28,7 +28,7 @@
 {{ if or .Site.Params.homeIntroTitle .Site.Params.homeIntroContent }}
 <div class="intro">
     {{ with .Site.Params.homeIntroTitle }}
-    <h1>{{ . }}</h1>
+    <strong>{{ . }}</strong>
     {{ end }}
 
     {{ with .Site.Params.homeIntroContent }}

@@ -24,7 +24,7 @@ aboutMeAudio = "./phdpodcast.wav"
 aboutMeVideo = "https://www.youtube.com/embed/xSnyjV5pLr4"
 
 # Intro on main page, content is markdown
-homeIntroTitle = ''
+homeIntroTitle = 'Mechatronics Software Engineer'
 homeIntroContent = """
 I am a dedicated and creative mechatronics engineer with a Master's degree from the University of Agder. My experience with R&D in addition to building a startup makes me a versatile asset. I like a challenge and love to learn new things!
 """
@@ -73,8 +73,8 @@ name = "projects"
 url = "/projects"
 
 [[params.menu]]
-name = "papers"
-url = "/papers"
+name = "publications"
+url = "/publications"
 
 [[params.menu]]
 name = "cv"

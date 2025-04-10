@@ -1,0 +1,238 @@
++++
+title = "Virtual Reality Based Remote Control of Robot"
+date = "2024-06-28T00:00:00-00:00"
+summary = "By using Node-RED, MQTT and a Virtual Reality interface, we are able to do remote monitoring and control of a manufacturing cell."
+categories = ["projects"]
+tags = ["projects"]
+layout = "hyde-master"
+draft = false
++++
+
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Virtual Reality Based Remote Control of Robot</title>
+        <style>
+            .container {
+                padding: 0px;
+            }
+            
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                height: 0;
+                overflow: hidden;
+                margin-bottom: 30px;
+            }
+            
+            .video-container iframe {
+                position: absolute;
+                border-radius: 10px; 
+                max-width: 95%; 
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;    
+            }
+            
+            audio {
+                width: 100%;
+                max-width: 500px;
+                margin: 20px 0;
+            }
+            
+            details {
+                margin-bottom: 20px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 20px;
+            }
+            
+            summary {
+                font-weight: bold;
+                cursor: pointer;
+            }
+            
+            ul {
+                margin-top: 10px;
+            }
+            
+            .publication {
+                margin-bottom: 20px;
+                padding: 15px;
+                background-color: white;
+                border-radius: 20px;
+                border-left: 4px solid #82ccdd;
+            }
+            
+            .publication-title {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            
+            .publication-authors {
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+            
+            .publication-venue {
+                color: #7d7d7d;
+                margin-bottom: 10px;
+            }
+            
+            .publication-link {
+                display: block;
+                margin-top: 10px;
+            }
+            
+            .publication-abstract {
+                font-size: 0.9em;
+                margin-top: 10px;
+            }
+            
+            .abstract-full {
+                display: none;
+                margin-top: 5px;
+            }
+            
+            .read-more, .read-less {
+                color: #3498db;
+                font-weight: bold;
+                cursor: pointer;
+                margin-left: 5px;
+            }
+            
+            .read-more:hover, .read-less:hover {
+                text-decoration: underline;
+            }
+            .image-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .image-caption {
+                font-size: 0.9em;
+                color: #666;
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+            }
+            
+            .grid-item {
+                padding: 20px;
+                background-color: white;
+                border-radius: 20px;
+            }
+            
+            .highlight-box {
+                background-color:  white;
+                border-left: 4px solid #82ccdd;
+                padding: 15px;
+                margin: 20px 0;
+                border-radius: 20px;
+            }
+        </style>
+        <script>
+            function toggleAbstract(id) {
+                var fullText = document.getElementById('abstract-full-' + id);
+                var readMoreBtn = document.getElementById('read-more-' + id);
+                var readLessBtn = document.getElementById('read-less-' + id);
+                
+                if (fullText.style.display === 'none' || fullText.style.display === '') {
+                    fullText.style.display = 'inline';
+                    readMoreBtn.style.display = 'none';
+                    readLessBtn.style.display = 'inline';
+                } else {
+                    fullText.style.display = 'none';
+                    readMoreBtn.style.display = 'inline';
+                    readLessBtn.style.display = 'none';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/xSnyjV5pLr4" 
+                    frameborder="0" 
+                    allowfullscreen
+                    width="560" 
+                    height="315">
+                </iframe>
+            </div>
+
+            <p>In my latest research, I've been exploring how we can make robots more accessible and easier to work with, especially in industrial settings. The goal is to create a system where humans and robots can collaborate seamlessly, even when they're not in the same physical space. This is where the concept of "digital twins" comes in, a virtual replica of real entities that you can interact with from your computer or even a VR headset. The video above demonstrates our work.</p>
+
+            <h2>Building a Framework for Collaboration</h2>
+            
+            <p>Our research focuses on developing a framework that makes this kind of remote collaboration possible. This framework combines several technologies:</p>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Robot Operating System 2 (ROS 2)</h3>
+                    <p>This provides the foundation for controlling the robot and managing communication between different components of the system.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Node-RED</h3>
+                    <p>This tool helps process and visualize data from the robot, making it easier to understand what's happening.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>MQTT</h3>
+                    <p>This protocol enables secure and efficient communication between the digital twin and the physical robot, even over long distances.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Virtual Reality (VR)</h3>
+                    <p>This technology creates an immersive experience, allowing users to interact with the digital twin as if they were right there with the physical robot.</p>
+                </div>
+            </div>
+
+            <h2>Real-World Applications: A Case Study</h2>
+            
+            <!-- <div class="highlight-box"> -->
+                <p>To test this framework, we used it to control a collaborative robot (cobot), a gripper and a conveyor belt in a simulated industrial environment. The cobot was equipped with a camera and sensors, and we were able to monitor and control it remotely using a VR headset. This demonstration showed how the framework could be used to perform tasks like picking and placing objects.</p>
+            <!-- </div> -->
+
+            <div class="image-container">
+                <img src="./overview.png" width="50%" style="margin: auto" alt="Overview of the case study">
+                <p class="image-caption">Overview of the case study setup featuring a cobot, camera, PLC, and conveyor belt within the digital twin framework for real-time remote control and monitoring.</p>
+            </div>
+
+            <h2>Benefits and Beyond</h2>
+            
+            <p>This research has the potential to transform the way we interact with robots. By enabling remote collaboration, we can make robots more accessible to people who may not be able to work in close proximity to them, such as individuals with disabilities. Additionally, this technology can improve safety by allowing humans to control robots from a safe distance in hazardous environments.</p>
+            
+            <p>While this research is still ongoing, the results so far are promising. We believe that this framework has the potential to revolutionize the field of human-robot interaction, making it easier for us to work together with our robotic counterparts.</p>
+            
+            <p>You can find the code for this project on my GitHub page: <a href="https://github.com/evenlangas/robot-control-virtual-reality-mqtt" target="_blank">https://github.com/evenlangas/robot-control-virtual-reality-mqtt</a></p>
+
+            <h2>Research Publications</h2>
+            <div class="publication">
+                <div class="publication-title">Inclusive Digital Twins with Edge Computing, Cloud Communication and Virtual Reality to Achieve Remote Human-Robot Interaction</div>
+                <div class="publication-authors">Even Falkenberg Langås, Halima Zahra Bukhari, Daniel Hagen, Muhammad Hamza Zafar, Filippo Sanfilippo</div>
+                <div class="publication-venue">12th International Conference on Control, Mechatronics and Automation (ICCMA), 2024</div>
+                <div class="publication-abstract">
+                    <strong>Abstract:</strong> Digital twins, advanced robotics, edge computing, and immersive technologies have come together to create novel solutions that increase flexibility and operating efficiency.
+                    <span id="abstract-full-1" class="abstract-full">
+                        This work is motivated by the need to harness these advancements to develop a robust architecture that supports edge intelligence and real-time remote monitoring and control. The aim of this work is to define a comprehensive framework for digital twins of complex mechatronic systems. The framework enables seamless connection between the physical environment and a virtual representation accessible from remote locations. Key components of the framework include the Robot Operating System 2 (ROS 2) for robot control, Node-RED for data processing and edge communication, a Message Queuing Telemetry Transport (MQTT) broker for cloud-based communication, and a virtual reality (VR) application for immersive interaction. A case study is presented to demonstrate the framework's capabilities. Through the VR application, users can interact with a digital twin of a mechatronic system consisting of a collaborative robot, a programmable logic controller (PLC), a conveyor belt and numerous sensors. The user interface lets the operator manipulate the robot and monitor sensor data in real-time. Latency is measured to validate the performance of the framework, resulting in a mean latency of around 116 ms.
+                    </span>
+                    <span id="read-more-1" class="read-more" onclick="toggleAbstract(1)">Read more</span>
+                    <span id="read-less-1" class="read-less" onclick="toggleAbstract(1)" style="display: none;">Show less</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

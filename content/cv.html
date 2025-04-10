@@ -51,7 +51,7 @@ hidePagination: true
             }
             
             .cv-company:hover {
-                color: #079992;
+                color: #60a3bc;
             }
 
             .cv-meta {
@@ -117,6 +117,46 @@ hidePagination: true
                     margin-top: 5px;
                 }
             }
+
+            .cv-progression {
+                margin-top: 15px;
+                padding-top: 10px;
+            }
+
+            .cv-role {
+                /* margin-top: 10px; */
+                padding: 5px;
+                padding-left: 15px;
+                border-left: 2px solid #eee;
+                position: relative;
+            }
+
+            .cv-role:before {
+                content: "";
+                position: absolute;
+                left: -5px;
+                top: 17px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: #82ccdd;
+            }
+
+            .cv-role-period {
+                font-style: italic;
+                color: #7f8c8d;
+                margin-right: 15px;
+                font-size: 0.9em;
+            }
+
+            .cv-role-title {
+                color: #34495e;
+            }
+
+            /* Hide the main title when there are multiple roles */
+            .cv-progression + .cv-title {
+                display: none;
+            }
         </style>
         <div class="container">
             <!-- <div class="intro"> -->
@@ -130,21 +170,22 @@ hidePagination: true
                     <div class="cv-item">
                         <a href="https://www.twilligent.io/" class="cv-company">Twilligent</a>
                         <div class="cv-meta">
-                            <div class="cv-period">October 2022 - Present</div>
+                            <div class="cv-period">October 2021 - Present</div>
                             <div class="cv-location">Arendal, Norway</div>
                         </div>
-                        <div class="cv-title">Industrial PhD Research Fellow and Chief Technology Officer</div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="cv-item">
-                        <a href="https://www.twilligent.io/" class="cv-company">Twilligent</a>
-                        <div class="cv-meta">
-                            <div class="cv-period">October 2021 - October 2022</div>
-                            <div class="cv-location">Arendal, Norway</div>
+                        <!-- <div class="cv-title">Industrial PhD Research Fellow and Chief Technology Officer</div> -->
+                        <div class="cv-progression">
+                            <div class="cv-role">
+                                <span class="cv-role-period">October 2022 - Present</span>
+                                </br>
+                                <span class="cv-role-title">Industrial PhD Research Fellow and CTO</span>
+                            </div>
+                            <div class="cv-role">
+                                <span class="cv-role-period">October 2021 - October 2022</span>
+                                </br>
+                                <span class="cv-role-title">R&D Engineer</span>
+                            </div>
                         </div>
-                        <div class="cv-title">R&D Engineer</div>
                     </div>
                 </div>
 

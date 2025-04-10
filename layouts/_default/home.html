@@ -5,6 +5,10 @@
 {{ if .Site.Params.homePicture }}
 {{ with .Site.Params.homePicture }}
 <img src="{{ . }}" alt="Profile picture" style="
+    width: 100%;
+">
+</img>
+<!-- <img src="{{ . }}" alt="Profile picture" style="
     width:150px;
     height:150px;
     -webkit-border-radius: 50%;
@@ -15,7 +19,7 @@
     -webkit-filter: grayscale(30%);
     filter: grayscale(30%);
 ">
-</img>
+</img> -->
 {{ end }}
 {{ end }}
 

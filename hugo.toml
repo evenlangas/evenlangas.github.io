@@ -16,7 +16,8 @@ description = "A Tech Blog"
 # Appearance settings
 theme = 'auto'
 
-homePicture = "./profilbilde.jpg"
+# homePicture = "./profilbilde.jpg"
+homePicture = "./portfoliopagepicture.png"
 currentPosition = "Head of R&D at Twilligent / PhD Research Fellow at UiA"
 
 aboutMeAudio = "./phdpodcast.wav"

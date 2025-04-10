@@ -13,7 +13,7 @@ hidePagination: true
     }
     
     .search-input {
-        width: 70%;
+        width: 60%;
         padding: 10px;
         font-size: 16px;
         border: 1px solid #8383832a;
@@ -21,9 +21,9 @@ hidePagination: true
     }
     
     .search-button {
-        padding: 10px 15px;
-        background-color: #82ccdd;
-        color: white;
+        padding: 10px 10px;
+        background-color: #dad8d3;
+        /* color: white; */
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -31,7 +31,7 @@ hidePagination: true
     }
     
     .search-button:hover {
-        background-color: #60a3bc;
+        background-color: #c7c5c0;
     }
     
     .publication {
@@ -143,8 +143,8 @@ hidePagination: true
 
 <div class="search-container">
     <input type="text" id="search-input" class="search-input" placeholder="Search by title, author, or content...">
-    <button class="search-button" onclick="searchPublications()">Search</button>
-    <button class="search-button" onclick="clearSearch()" style="background-color: #f8c291;">Clear</button>
+    <button class="search-button" onclick="searchPublications()"><img src="/search.png" width="24px" height="24px"></button>    
+    <button class="search-button" onclick="clearSearch()"><img src="/close.png" width="24px" height="24px"></button>
 </div>
 
 <div id="no-results" class="no-results">No publications found matching your search criteria.</div>

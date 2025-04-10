@@ -1,0 +1,57 @@
+/* Add this CSS to your theme's stylesheet */
+.expertise-section {
+    margin: 30px 0;
+}
+
+.keywords-box {
+    /* background-color: #f8f9fa; */
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 30px 20px 20px;
+    position: relative;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); */
+}
+
+.keywords-title {
+    position: absolute;
+    top: -20px;
+    /* left: 20px; */
+    margin: auto;
+    background-color: var(--background);
+    padding: 2px 15px;
+    /* border-radius: 30px; */
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 0.95em;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); */
+}
+
+.keywords-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.keyword {
+    background-color: white;
+    color: #2c3e50;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.95em;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.keyword:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    /* background-color: #78e08f;
+    color: white; */
+}
+
+@media (max-width: 600px) {
+    .keywords-container {
+        justify-content: center;
+    }
+}

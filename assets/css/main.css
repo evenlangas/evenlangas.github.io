@@ -171,6 +171,32 @@ footer a {
   align-items: baseline;
 }
 
+.post-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  border-left: 3px solid #82ccdd;
+}
+
+/* If you want hover effects */
+.post-link:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.post-line {
+}
+
+/* .post-line a:hover {
+  color: red;
+} */
+
 .post-line p {
   margin-top: 0rem;
   margin-bottom: 0rem;
@@ -179,8 +205,7 @@ footer a {
 .line-date {
   font-size: small;
   font-family: "Monaspace";
-  min-width: 120px;
-  max-width: 120px;
+  width: 100%;
   text-align: right;
   padding-right: 1rem;
   margin-top: 0rem;
@@ -189,6 +214,7 @@ footer a {
 
 .line-title {
   margin: 0;
+  font-weight: bold;
 }
 
 .tag-title {
@@ -236,7 +262,7 @@ footer a {
 /* Social Icons */
 
 .social-icons {
-  padding: 12px 0;
+  padding: 12px 6px;
   margin-bottom: var(--social-icons-bottom-margin)
 }
 

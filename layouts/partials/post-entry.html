@@ -1,0 +1,23 @@
+<a href="{{ .RelPermalink }}" class="post-link">
+    <div class="post-line">
+        {{ $dateFormat := "2 Jan 2006"}}
+        {{ with .Site.Params.listDateFormat }}
+        {{ $dateFormat = .}}
+        {{ end }}
+        <div>
+
+            <p class="line-title">
+                {{ .Title }}
+            </p>
+
+
+
+            {{ if .Site.Params.listSummaries }}
+            <p class="line-summary"> {{ .Summary }} </p>
+            {{ end }}
+            <p class="line-date">{{ .Date.Format $dateFormat }} </p>
+
+        </div>
+    </div>
+</a>
+

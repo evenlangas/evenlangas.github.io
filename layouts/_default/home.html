@@ -51,9 +51,23 @@
 </div>
 {{ end }}
 
+{{/* Keywords / Areas of Expertise */}}
+<div class="expertise-section">
+    <div class="keywords-box">
+        <div class="keywords-title">Skills & Interests</div>
+        <div class="keywords-container">
+            <span class="keyword">Industrial IoT</span>
+            <span class="keyword">Robotics</span>
+            <span class="keyword">Computer Vision</span>
+            <span class="keyword">AI / Machine Learning</span>
+            <span class="keyword">Full Stack Development</span>
+            <span class="keyword">Digital Twins</span>
+        </div>
+    </div>
+</div>
 
 <div>
-    <h3>About my work</h3>
+    <!-- <h3>About my work</h3>
     
     <p>
         {{with .Site.Params.currentPosition}}
@@ -70,7 +84,7 @@
                 <iframe style="border-radius: 10px; width: 500px; max-width: 95%; aspect-ratio: 16/9;" src="{{.}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     {{ end }}
-    {{ end }}
+    {{ end }} -->
 
     <!-- {{ if .Site.Params.aboutMeAudio }}
         {{ with .Site.Params.aboutMeAudio }}
@@ -90,7 +104,7 @@
 {{ if .Site.Params.homeCollection }}
 
 
-<!-- <div class="list-container">
+<div class="list-container">
     {{ with .Site.Params.homeCollectionTitle}}
     <h1> {{ . }} </h1>
     {{ end }}
@@ -111,7 +125,7 @@
 
     {{ partial "pagination-controls.html" $paginator}}
 
-</div> -->
+</div>
 {{ end }}
 
 {{ end }}

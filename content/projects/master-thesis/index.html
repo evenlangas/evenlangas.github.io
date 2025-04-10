@@ -1,0 +1,128 @@
+
++++
+title = "Master Thesis: Playing Fetch With an Industrial Robot"
+date = "2021-06-01T00:00:00-00:00"
+summary = "Autonomous Pick-and-Place Procedure with an Industrial Robot Using Multiple 3D Sensors for Object Detection and Obstacle Avoidance."
+categories = ["projects"]
+tags = ["projects"]
+layout = "hyde-master"
+draft = false
++++
+
+
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                height: 0;
+                overflow: hidden;
+                margin: 30px 0;
+            }
+            
+            .video-container iframe {
+                position: absolute;
+                border-radius: 10px; 
+                max-width: 95%; 
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;    
+            }
+            
+            .image-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .image-caption {
+                font-size: 0.9em;
+                color: #666;
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            .section {
+                margin-bottom: 30px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1QShpxbUy2Q" title="Master Thesis: Playing Fetch With an Industrial Robot" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="section">
+            <p>This thesis proposes a full pipeline autonomous pick-and-place procedure, integrating perception, planning, grasping and control for execution of tasks towards long term industrial automation. Within perception, we demonstrate the detection of a large object (target) including position and orientation (pose) estimation in 3D world. Further on, obstacles in the work area are mapped with proposed filtering prior to motion planning and navigation of an industrial robot to the target's pose. The target is then picked using a custom built motorized 3D printed end gripper, and placed at a desired location in the robot's reachable environment. Point cloud based model-free obstacle avoidance is performed throughout the whole process. The complete pipeline is targeted towards typical tasks in various industries including offshore, logistics and warehouse domain with scanning of the scene, picking and placing of a bulky object from one position to another without or with minimal human intervention.</p>
+        </div>
+
+
+        <div class="section">
+            <p>The proposed methodology was tested upon the point cloud representation of the scene using a network of six RGB-D cameras covering the entire working environment. The empirical results together with the statistical analysis show that the proposed methodology is able to map the environment of volume 10 m x 10 m x 5 m with lesser noise and determine the target position of length 1.2 m with accuracy of 4.8 mm and precision of 3.6 mm from 10000 measurements. Integrating the proposed object detection and localization, obstacle mapping and gripper with an industrial robot resulted in a consistent, versatile and autonomous pick-and-place procedure. 30 successive tests with multiple obstacles and with the target object placed vertically, horizontally and angled, displayed no collisions and 100% success rate on both gripping and placement of the target.</p>
+        </div>
+
+        <div class="section">
+            <h2>Project Components</h2>
+            
+            <h3>Perception</h3>
+            <p>We developed algorithms for object detection and localization as well as obstacle mapping using point clouds from six RGB-D cameras. The RANSAC (Random Sample Consensus) method was used for cylinder segmentation, while statistical filtering was applied to reduce noise in the obstacle mapping.</p>
+            
+            <div class="image-container">
+                <img src="./object_detection.png" alt="Object Detection and Localization">
+                <p class="image-caption">Object detection showing the point cloud with the cylinder marked in red</p>
+            </div>
+            
+            <h3>Gripper Development</h3>
+            <p>A custom gripper was designed and 3D printed specifically for grasping a cylindrical target. The gripper uses a DC motor with gearing, synchronized movement of the arms, and a position sensor to provide feedback for automated control.</p>
+            
+            <div class="image-container">
+                <img src="./gripper.png" alt="Custom 3D-printed motorized gripper" width="50%" style="margin: auto">
+                <p class="image-caption">Custom 3D-printed motorized gripper mounted on the industrial robot</p>
+            </div>
+            
+            <h3>Motion Planning and Obstacle Avoidance</h3>
+            <p>We implemented model-free obstacle avoidance using MoveIt and OMPL (Open Motion Planning Library) to navigate the industrial robot safely through the environment.</p>
+            
+            <div class="image-container">
+                <img src="./obstacle_avoidance.png" alt="Obstacle avoidance demonstration" width="70%" style="margin: auto;">
+                <p class="image-caption">Model free obstacle avoidance</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Results</h2>
+            <p>Our system achieved excellent performance in real-world testing:</p>
+            <ul>
+                <li>Environment mapping of 10m x 10m x 5m with minimal noise</li>
+                <li>Object position estimation with 4.8mm accuracy and 3.6mm precision</li>
+                <li>Object orientation estimation with 0.62° accuracy and 0.32° precision</li>
+                <li>100% success rate in 30 pick-and-place trials with varying object positions</li>
+                <li>Zero collisions during all test runs</li>
+            </ul>
+            
+            <div class="image-container">
+                <img src="./pick_and_place.png" alt="Pick-and-place sequence">
+                <p class="image-caption">Sequence of the autonomous pick-and-place procedure</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Resources</h2>
+            <p>The entire code developed in the project can be found on Github including links to CAD-files of the gripper. A video demonstrating the complete pick-and-place procedure can be seen above.</p>
+            <p>Github: <a href="https://github.com/evenfl/p26_master" target="_blank">github.com/evenfl/p26_master</a></p>
+            <p>Video: <a href="https://youtu.be/1QShpxbUy2Q" target="_blank">youtu.be/1QShpxbUy2Q</a></p>
+            <p>Read the entire thesis <a href="https://hdl.handle.net/11250/2826427" target="_blank">here</a>.</p>
+        </div>
+    </body>
+</html>

@@ -6,11 +6,10 @@ theme = 'typo'
 [taxonomies]
 tag = 'tags'
 
+googleAnalytics = "G-R6VE55D8WD"
 
 [params]
-
-# Google analytics code
-googleAnalytics = "G-R6VE55D8WD"
+    googleAnalytics = "G-R6VE55D8WD"
 
 # Meta description
 description = "A Tech Blog"

@@ -1,0 +1,422 @@
+---
+title: "3D Printing"
+description: ""
+hideBackToTop: true
+hidePagination: true
+# autonumber: true
+---
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>3D-Utskriftsportefølje</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /* Generelle stiler */
+            /* body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 0;
+            } */
+            
+            /* .container {
+                padding: 20px;
+                max-width: 900px;
+                margin: 0 auto;
+            } */
+            
+            h2 {
+                margin-top: 40px;
+                margin-bottom: 25px;
+                padding-bottom: 10px;
+                color: #2c3e50;
+                font-size: 1.6em;
+            }
+            
+            .image-container {
+                margin: 20px 0;
+                text-align: center;
+            }
+            
+            .image-container img {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            .image-caption {
+                font-size: 0.9em;
+                color: #666;
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+            }
+            
+            .grid-item {
+                padding: 20px;
+                background-color: white;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
+            
+            .grid-item:hover {
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transform: translateY(-2px);
+            }
+            
+            .cta-container {
+                margin-top: 40px;
+                padding: 25px;
+                background-color: white;
+                border-radius: 20px;
+                text-align: center;
+                border-left: 4px solid #82ccdd;
+            }
+            
+            .cta-button {
+                display: inline-block;
+                background-color: #82ccdd;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 30px;
+                text-decoration: none;
+                font-weight: bold;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+            }
+            
+            .cta-button:hover {
+                background-color: #60b8cc;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            
+            /* Simple Slideshow styles */
+            .slideshow-container {
+                max-width: 800px;
+                position: relative;
+                margin: 0 auto 60px auto;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                border-radius: 20px;
+                overflow: hidden;
+                background-color: white;
+            }
+            
+            .mySlides {
+                display: none;
+                padding: 30px;
+                height: 700px;
+                position: relative;
+            }
+            
+            .mySlides.fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+            
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+            
+            .slide-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: blur(15px) brightness(0.7);
+                z-index: 0;
+                transform: scale(1.1);
+            }
+            
+            .slide-content {
+                position: relative;
+                z-index: 1;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .slide-image {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .slide-image img {
+                height: 400px;
+                max-width: 100%;
+                object-fit: contain;
+            }
+            
+            .slide-caption {
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 30px;
+            }
+            
+            .slide-title {
+                font-weight: bold;
+                font-size: 1.2em;
+                margin-bottom: 10px;
+                color: #2c3e50;
+            }
+            
+            /* Next & previous buttons */
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                color: #2c3e50;
+                font-weight: bold;
+                font-size: 18px;
+                transition: 0.3s ease;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                border: none;
+                z-index: 2;
+            }
+            
+            .prev {
+                left: 20px;
+            }
+            
+            .next {
+                right: 20px;
+            }
+            
+            .prev:hover, .next:hover {
+                background-color: rgba(255, 255, 255, 1);
+                transform: translateY(-50%) scale(1.1);
+            }
+            
+            /* Dots/bullets/indicators */
+            .dots-container {
+                text-align: center;
+                position: absolute;
+                bottom: 15px;
+                width: 100%;
+            }
+            
+            .dot {
+                cursor: pointer;
+                height: 12px;
+                width: 12px;
+                margin: 0 5px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 50%;
+                display: inline-block;
+                transition: 0.3s ease;
+            }
+            
+            .active-dot, .dot:hover {
+                background-color: #82ccdd;
+                transform: scale(1.2);
+            }
+            
+            /* Slide counter */
+            .slideshow-counter {
+                position: absolute;
+                bottom: 15px;
+                right: 20px;
+                background-color: rgba(255, 255, 255, 0.7);
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.9em;
+                color: #34495e;
+                z-index: 5;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <p>Jeg tilbyr 3D-printing for prototyper, funksjonelle deler, og personlige prosjekter. Med min bakgrunn i mekatronikk kan jeg hjelpe deg gjennom hele prosessen - fra design og modellering til ferdig produkt.</p>
+            
+            <!-- <div class="image-container">
+                <img src="/api/placeholder/800/400" alt="3D-printer i aksjon">
+                <p class="image-caption">Min Creality Ender-3 V2 3D-printer i aksjon med en prototypedel for et industrielt prosjekt.</p>
+            </div> -->
+            
+            <h2>Eksempelprosjekter</h2>
+            
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <!-- Full-width images with caption text -->
+                <div class="mySlides fade">
+                    <img src="./veratank.jpg" alt="Industriell prototype" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-image">
+                            <img src="./veratank.jpg" alt="Industriell prototype">
+                        </div>
+                        <div class="slide-caption">
+                            <div class="slide-title">Nedskalert modell av industritank</div>
+                            <p>En nedskalert modell av en industritank, som brukes til å presentere produktet på messer i forbindelse med salg av produktet. Printet i flere deler i forskjellige farger, og ble til slutt 42 cm høy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="./gripper.png" alt="Griper til industrirobot" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-image">
+                            <img src="./gripper.png" alt="Griper til industrirobot">
+                        </div>
+                        <div class="slide-caption">
+                            <div class="slide-title">Prototype av griper til industrirobot</div>
+                            <p>Som en del av masteroppgaven i mekatronikk designet og printet jeg en prototype av en griper til en industrirobot i samarbeid med en medstudent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="./tvillingfabrikken.jpg" alt="3D-variant av logo" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-image">
+                            <img src="./tvillingfabrikken.jpg" alt="3D-variant av logo">
+                        </div>
+                        <div class="slide-caption">
+                            <div class="slide-title">3D-variant av logo</div>
+                            <p>Markedsføringsprosjekt hvor jeg lagde en 3D-modell av en tradisjonell 2D logo. Modellen ble etterbehandlet med sandpapir og spraymaling for en penere finish.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="./arduinobot.jpg" alt="Arkitekturmodell" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-image">
+                            <img src="./arduinobot.jpg" alt="Arkitekturmodell">
+                        </div>
+                        <div class="slide-caption">
+                            <div class="slide-title">Arduinobot</div>
+                            <p>En open-source robot utstyrt med motorer og mikrokontroller for å kunne kontrollere den.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next and previous buttons -->
+                <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+                <button class="next" onclick="plusSlides(1)">&#10095;</button>
+                
+                <!-- The dots/circles -->
+                <div class="dots-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+                
+                <!-- Slide counter -->
+                <div class="slideshow-counter">
+                    <span id="current">1</span>/4
+                </div>
+            </div>
+            
+            <h2>Arbeidsprosess</h2>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>1. Konsultasjon</h3>
+                    <p>Vi diskuterer din idé, krav, og spesifikasjoner for å forstå prosjektet ditt fullt ut. Dette hjelper meg å foreslå optimale materialer og utskriftsinnstillinger.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>2. Design og Optimalisering</h3>
+                    <p>Jeg kan jobbe med dine eksisterende filer eller hjelpe med designet. Alle modeller blir optimalisert for 3D-printing for å sikre best mulig kvalitet.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>3. Produksjon</h3>
+                    <p>Modellene skrives ut med nøye overvåking for å sikre kvalitet. Avhengig av kompleksitet og størrelse kan printing ta fra noen timer til flere dager.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>4. Etterbehandling og Levering</h3>
+                    <p>Etter utskrift blir delene rengjort, etterbehandlet etter behov, og grundig inspisert før levering eller henting.</p>
+                </div>
+            </div>
+            
+            <div class="cta-container">
+                <h2>Interessert i å få noe 3D-printet?</h2>
+                <p>Har du et prosjekt i tankene eller trenger du hjelp med å bringe ideene dine til virkeligheten? Ta kontakt for en uforpliktende samtale om hvordan jeg kan hjelpe deg med 3D-printing.</p>
+                <p>Send meg en e-post med detaljer om prosjektet ditt, inkludert eventuelle skisser, modeller eller spesifikasjoner du allerede har.</p>
+                <a href="mailto:evenf.langas@gmail.com" class="cta-button">Ta kontakt nå</a>
+            </div>
+        </div>
+
+        <script>
+            // Slideshow functionality
+            let slideIndex = 1;
+            
+            // Show slides initially
+            document.addEventListener('DOMContentLoaded', function() {
+                showSlides(slideIndex);
+                
+                // Auto advance slides every 5 seconds
+                setInterval(function() {
+                    plusSlides(0);
+                }, 5000);
+            });
+            
+            // Next/previous controls
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+            
+            // Thumbnail image controls
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                let current = document.getElementById("current");
+                
+                // Loop back to the first slide if we reach the end
+                if (n > slides.length) {slideIndex = 1}
+                
+                // Loop to the last slide if we go before the first slide
+                if (n < 1) {slideIndex = slides.length}
+                
+                // Hide all slides
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                
+                // Remove active class from all dots
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active-dot", "");
+                }
+                
+                // Show the current slide
+                slides[slideIndex-1].style.display = "block";
+                
+                // Add active class to the current dot
+                dots[slideIndex-1].className += " active-dot";
+                
+                // Update slide counter
+                current.textContent = slideIndex;
+            }
+        </script>
+    </body>
+</html>

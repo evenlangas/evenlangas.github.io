@@ -38,7 +38,7 @@
     padding: 8px 16px;
     border-radius: 30px;
     font-size: 0.95em;
-    display: inline-block;
+    display: inline-flex;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
 }
